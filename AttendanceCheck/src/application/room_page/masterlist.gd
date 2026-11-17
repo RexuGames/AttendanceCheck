@@ -5,9 +5,22 @@ extends Node
 @export_group("References")
 @export var student_panel: Panel
 @export var list: VBoxContainer
+@export var edit: TextureButton
 
 
 var masterlist : Dictionary[String, String]
+
+func _enter_tree() -> void:
+	Utils.SafeConnect(edit.pressed, _on_edit_pressed)
+
+#region Listeners
+func _on_edit_pressed() -> void:
+	Widgets.CreateEditMasterlist(masterlist, 
+		func(new_masterlist : Dictionary):
+			UpdateMasterlistData(new_masterlist)
+			UpdateDisplayedMasterlist()
+	)
+#endregion
 
 #region Global
 func Init(masterlist : Dictionary[String, String]) -> void:
@@ -16,6 +29,10 @@ func Init(masterlist : Dictionary[String, String]) -> void:
 #endregion
 
 #region Local
+func UpdateMasterlistData(new_masterlist : Dictionary[String,String]) -> void:
+	masterlist = new_masterlist
+	EventBus.masterlist_updated.emit(masterlist)
+	
 ## Updates displayed masterlist students 
 func UpdateDisplayedMasterlist() -> void:
 	Utils.RemoveChildren(list, student_panel)

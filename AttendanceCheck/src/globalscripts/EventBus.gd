@@ -2,6 +2,10 @@
 extends Node
 
 
+#region Data
+@warning_ignore("unused_signal") signal masterlist_updated(new_masterlist : Dictionary)
+#endregion
+
 #region Pages
 ## Emitted when page is pushed in Page Stack
 @warning_ignore("unused_signal") signal page_pushed(page : PageCanva, passed_data : Dictionary)  

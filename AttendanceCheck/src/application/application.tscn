@@ -24,10 +24,11 @@ script = ExtResource("3_g0tt8")
 masterlist_handler = NodePath("Masterlist")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
-[node name="Masterlist" type="Node" parent="InactivePages/RoomPage" unique_id=1742367260 node_paths=PackedStringArray("student_panel", "list")]
+[node name="Masterlist" type="Node" parent="InactivePages/RoomPage" unique_id=1742367260 node_paths=PackedStringArray("student_panel", "list", "edit")]
 script = ExtResource("4_g0tt8")
 student_panel = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List/StudentPanel")
 list = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List")
+edit = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header/Edit")
 
 [node name="Background" type="Panel" parent="InactivePages/RoomPage" unique_id=1633302386]
 offset_right = 360.0
@@ -86,7 +87,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Master List"
 
-[node name="TextureButton" type="TextureButton" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header" unique_id=1542679338]
+[node name="Edit" type="TextureButton" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header" unique_id=1542679338]
 layout_mode = 2
 texture_normal = ExtResource("5_i6mit")
 stretch_mode = 5
