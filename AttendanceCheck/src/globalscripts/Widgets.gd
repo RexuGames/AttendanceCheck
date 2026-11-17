@@ -1,6 +1,14 @@
 extends Node
 
 #region Global
+func CreateEditAttendance(attendance_record : Dictionary[String, String], masterlist : Dictionary[String,String], _on_confirmed : Callable) -> void:
+	_CreateWidget(
+		{
+			"masterlist": masterlist,
+			"attendance_record": attendance_record
+		}, 
+		load("uid://dbnsgbg2qwlbg"),
+		 _on_confirmed)
 func CreateEditMasterlist(masterlist : Dictionary[String,String], _on_confirmed : Callable) -> void:
 	_CreateWidget(
 		{
