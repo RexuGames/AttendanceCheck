@@ -2,6 +2,20 @@
 
 [ext_resource type="FontFile" uid="uid://dg7bp6l4xdcl1" path="res://assets/fonts/Inter-Regular.ttf" id="1_w2816"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nc0p"]
+bg_color = Color(0.96913654, 0.96913713, 0.96913666, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2816"]
+bg_color = Color(0.8776142, 0.8776164, 0.87761515, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [resource]
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/fonts/font = ExtResource("1_w2816")
@@ -9,3 +23,6 @@ MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10
 MarginContainer/constants/margin_top = 10
+Panel/styles/panel = SubResource("StyleBoxFlat_7nc0p")
+SubPanel/base_type = &"Panel"
+SubPanel/styles/panel = SubResource("StyleBoxFlat_w2816")

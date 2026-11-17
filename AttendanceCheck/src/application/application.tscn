@@ -4,24 +4,27 @@
 [ext_resource type="Script" uid="uid://b742wa7qp0ipm" path="res://src/components/page_canva/PageCanva.gd" id="2_1p7pg"]
 [ext_resource type="Script" uid="uid://bkr67o7dtqi56" path="res://src/application/inactive_pages.gd" id="2_d04tn"]
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="4_7nc0p"]
+[ext_resource type="Texture2D" uid="uid://box3qnqykpvc8" path="res://assets/ui/edit.svg" id="5_i6mit"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh16w"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dh16w"]
 
 [node name="Application" type="Node" unique_id=719985536]
 
 [node name="PageStack" type="CanvasLayer" parent="." unique_id=1539532652 node_paths=PackedStringArray("entry_page")]
 script = ExtResource("1_aj7rh")
-entry_page = NodePath("../InactivePages/MainPage")
+entry_page = NodePath("../InactivePages/RoomPage")
 
 [node name="InactivePages" type="Node" parent="." unique_id=1755868745]
 script = ExtResource("2_d04tn")
 
-[node name="MainPage" type="CanvasLayer" parent="InactivePages" unique_id=2134657536]
+[node name="RoomPage" type="CanvasLayer" parent="InactivePages" unique_id=2134657536]
 script = ExtResource("2_1p7pg")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
-[node name="Background" type="Panel" parent="InactivePages/MainPage" unique_id=1633302386]
+[node name="Background" type="Panel" parent="InactivePages/RoomPage" unique_id=1633302386]
 offset_right = 360.0
 offset_bottom = 640.0
 grow_horizontal = 2
@@ -29,10 +32,118 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dh16w")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="InactivePages/MainPage" unique_id=896832211]
+[node name="Margin" type="MarginContainer" parent="InactivePages/RoomPage" unique_id=896832211]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_7nc0p")
+
+[node name="Contents" type="VBoxContainer" parent="InactivePages/RoomPage/Margin" unique_id=1614160538]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents" unique_id=1275692573]
+layout_mode = 2
+
+[node name="Info" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents" unique_id=1150917031]
+layout_mode = 2
+
+[node name="Datas" type="ScrollContainer" parent="InactivePages/RoomPage/Margin/Contents" unique_id=642862308]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Contents" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas" unique_id=668781185]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Masterlist" type="Panel" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents" unique_id=502686149]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist" unique_id=447752005]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin" unique_id=1974057319]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents" unique_id=526255254]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header" unique_id=2046841440]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master List"
+
+[node name="TextureButton" type="TextureButton" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header" unique_id=1542679338]
+layout_mode = 2
+texture_normal = ExtResource("5_i6mit")
+stretch_mode = 5
+
+[node name="ListHead" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents" unique_id=122186292]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Col1" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/ListHead" unique_id=866757323]
+layout_mode = 2
+text = "Student Name"
+
+[node name="Col2" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/ListHead" unique_id=1651599656]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "A"
+
+[node name="Col3" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/ListHead" unique_id=650163253]
+layout_mode = 2
+text = "P"
+
+[node name="VSeparator" type="VSeparator" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/ListHead" unique_id=1035192859]
+layout_mode = 2
+theme_override_constants/separation = -24
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dh16w")
+
+[node name="List" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents" unique_id=1040074789]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List" unique_id=2121800672]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_type_variation = &"SubPanel"
+
+[node name="Margin" type="MarginContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List/Panel" unique_id=1911333899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List/Panel/Margin" unique_id=1184517339]
+layout_mode = 2
+
+[node name="Number" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List/Panel/Margin/HBoxContainer" unique_id=1633279571]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "1."
+
+[node name="Name" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List/Panel/Margin/HBoxContainer" unique_id=840533455]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Austine Alagdon"
+
+[node name="Absent" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List/Panel/Margin/HBoxContainer" unique_id=1885115674]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "0"
+
+[node name="Present" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List/Panel/Margin/HBoxContainer" unique_id=1500392020]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "0"
