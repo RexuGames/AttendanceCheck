@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bl5h5pkoctln5"]
+
+[ext_resource type="Script" uid="uid://d31fcuof0wsl" path="res://src/application/page_stack.gd" id="1_aj7rh"]
+[ext_resource type="Script" uid="uid://b742wa7qp0ipm" path="res://src/components/page_canva/PageCanva.gd" id="2_1p7pg"]
+[ext_resource type="Script" uid="uid://bkr67o7dtqi56" path="res://src/application/inactive_pages.gd" id="2_d04tn"]
+[ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="4_7nc0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh16w"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Application" type="Node" unique_id=719985536]
+
+[node name="PageStack" type="CanvasLayer" parent="." unique_id=1539532652 node_paths=PackedStringArray("entry_page")]
+script = ExtResource("1_aj7rh")
+entry_page = NodePath("../InactivePages/MainPage")
+
+[node name="InactivePages" type="Node" parent="." unique_id=1755868745]
+script = ExtResource("2_d04tn")
+
+[node name="MainPage" type="CanvasLayer" parent="InactivePages" unique_id=2134657536]
+script = ExtResource("2_1p7pg")
+metadata/_custom_type_script = "uid://b742wa7qp0ipm"
+
+[node name="Background" type="Panel" parent="InactivePages/MainPage" unique_id=1633302386]
+offset_right = 360.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dh16w")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="InactivePages/MainPage" unique_id=896832211]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_7nc0p")

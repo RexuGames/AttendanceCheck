@@ -1,0 +1,76 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="AttendanceCheck"
+config/tags=PackedStringArray("Template")
+run/main_scene="uid://bl5h5pkoctln5"
+config/quit_on_go_back=false
+config/features=PackedStringArray("4.7")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+boot_splash/use_filter=false
+config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*uid://ba8mlv3kflvse"
+Utils="*uid://cpey55jvnwgbb"
+ToastCreator="*uid://tcs47yxg0al7"
+
+[display]
+
+window/size/viewport_width=360
+window/size/viewport_height=640
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/_Godot-IDE_/plugin.cfg", "res://addons/at-icons/plugin.cfg", "res://addons/log/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://addons/_Godot-IDE_/plugins/": "blue",
+"res://addons/_Godot-IDE_/shared_resources/": "teal",
+"res://src/components/": "purple",
+"res://src/globalscripts/": "pink"
+}
+
+[gui]
+
+theme/custom="uid://cxn5wxi13xdg"
+theme/custom_font="uid://dg7bp6l4xdcl1"
+
+[gui_transitions]
+
+config/default/auto_start=true
+config/default/fade_layout=true
+config/default/center_pivot=true
+config/default/duration=0.5
+config/default/delay=0.5
+config/default/transition_type="QUAD"
+config/default/ease_type="IN_OUT"
+config/default/animation_enter=4
+config/default/animation_leave=4
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[rendering]
+
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.03137255, 0.039215688, 0.050980393, 1)

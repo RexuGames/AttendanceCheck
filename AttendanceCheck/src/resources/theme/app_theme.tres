@@ -1,0 +1,11 @@
+[gd_resource type="Theme" format=3 uid="uid://cxn5wxi13xdg"]
+
+[ext_resource type="FontFile" uid="uid://dg7bp6l4xdcl1" path="res://assets/fonts/Inter-Regular.ttf" id="1_w2816"]
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = ExtResource("1_w2816")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
