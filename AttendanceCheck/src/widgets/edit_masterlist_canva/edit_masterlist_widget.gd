@@ -30,7 +30,7 @@ func _on_confirm_pressed() -> void:
 	edit_confirmed.emit(draft_masterlist)
 	CloseWidget()
 func _on_edit_student_pressed(student_id : String) -> void:
-	Widgets.CreateEditStudent(draft_masterlist[student_id], true, 
+	Widgets.CreateEditStudent(draft_masterlist[student_id], false, 
 	func(new_student_name : String):
 		draft_masterlist[student_id] = new_student_name
 		UpdateDisplayedMasterlist()
