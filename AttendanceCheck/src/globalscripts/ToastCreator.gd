@@ -3,48 +3,30 @@ extends CanvasLayer
 
 var _container: VBoxContainer
 
-func _ready() -> void:
-	layer = 100
-	_container = VBoxContainer.new()
-	_container.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
-	_container.alignment = BoxContainer.ALIGNMENT_END
-	_container.add_theme_constant_override("separation", 8)
-	_container.position.y -= 80
-	add_child(_container)
+func show_toast(message: String, long_duration: bool = false) -> void:
+	if not OS.get_name() == "Android":
+		print("Toast (non-Android): ", message)
+		return
 
-func ShowToast(message: String, icon: Texture2D = null, duration: float = 2.0) -> void:
-	var panel := PanelContainer.new()
-	panel.modulate.a = 0.0
+	var Toast = JavaClassWrapper.wrap("android.widget.Toast")
+	var Activity = JavaClassWrapper.wrap("org.godotengine.godot.Godot")
 
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.1, 0.1, 0.1, 0.9)
-	style.set_corner_radius_all(12)
-	style.content_margin_left = 16
-	style.content_margin_right = 16
-	style.content_margin_top = 10
-	style.content_margin_bottom = 10
-	panel.add_theme_stylebox_override("panel", style)
+	# Get the current activity instance
+	var activity = Engine.get_singleton("GodotLib").get_activity() if Engine.has_singleton("GodotLib") else null
 
-	var hbox := HBoxContainer.new()
-	hbox.add_theme_constant_override("separation", 8)
-	panel.add_child(hbox)
+	# More reliable: use OS.get_main_window() isn't a thing — use this instead:
+	var context = _get_activity()
+	if context == null:
+		push_error("Could not get Android activity context")
+		return
 
-	if icon:
-		var texture_rect := TextureRect.new()
-		texture_rect.texture = icon
-		texture_rect.custom_minimum_size = Vector2(24, 24)
-		texture_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		hbox.add_child(texture_rect)
+	var duration = Toast.LENGTH_LONG if long_duration else Toast.LENGTH_SHORT
+	var toast = Toast.makeText(context, message, duration)
+	toast.show()
 
-	var label := Label.new()
-	label.text = message
-	label.add_theme_color_override("font_color", Color.WHITE)
-	hbox.add_child(label)
 
-	_container.add_child(panel)
-
-	var tween := create_tween()
-	tween.tween_property(panel, "modulate:a", 1.0, 0.2)
-	tween.tween_interval(duration)
-	tween.tween_property(panel, "modulate:a", 0.0, 0.3)
-	tween.tween_callback(panel.queue_free)
+func _get_activity() -> JavaObject:
+	# Godot exposes the current activity via the special "GodotApp" singleton in 4.x
+	if Engine.has_singleton("GodotApp"):
+		return Engine.get_singleton("GodotApp")
+	return null

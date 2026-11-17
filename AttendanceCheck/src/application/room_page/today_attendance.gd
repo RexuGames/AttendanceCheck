@@ -18,14 +18,17 @@ func _enter_tree() -> void:
 #region Listeners
 func _on_masterlist_updated(new_masterlist : Dictionary) -> void:
 	masterlist = new_masterlist
-	RegisterStudents()
-	Log.pr("Masterlist Updated")
+	UpdateAttendanceTodayStudents() 
+	UpdateDisplayedAttendance()
 func _on_record_attendance_pressed() -> void:
-	Log.pr(masterlist)
+	if (masterlist.is_empty()):
+		ToastCreator.show_toast("Please add students first!")
+		return
 	Widgets.CreateEditAttendance(attendance_today, masterlist, 
 		func(new_record : Dictionary):
 			attendance_today = new_record
 			UpdateDisplayedAttendance()
+			UpdateStateContainers()
 			)
 	pass
 #endregion
@@ -34,19 +37,27 @@ func _on_record_attendance_pressed() -> void:
 func Init(attendance_history : Dictionary[Dictionary,Dictionary], masterlist : Dictionary[String,String]) -> void:
 	self.masterlist = masterlist
 	self.attendance_today = attendance_today
-	
-	if (attendance_today.is_empty()):
-		ToggleAttendanceContainer(false)
-	else:
-		RegisterStudents()
-		ToggleAttendanceContainer(true)
-		UpdateDisplayedAttendance()
+	UpdateStateContainers()
+
 #endregion
 
 #region Local
-## Adds students that is not in today_attenance if today_attendance is not empty!
-func RegisterStudents() -> void:
+## If has attendance record today Show Attendance List else show no record container
+func UpdateStateContainers() -> void:
+	if (attendance_today.is_empty()):
+		ToggleAttendanceContainer(false)
+	else:
+		ToggleAttendanceContainer(true)
+		UpdateDisplayedAttendance()
+## Adds students that is not in today_attenance NOTE: Only if today_attendance is not empty!
+func UpdateAttendanceTodayStudents() -> void:
 	if (attendance_today.is_empty()): return
+	
+	## Remove student in attendance that is not in masterlist.
+	for student_id : String in attendance_today:
+		if (masterlist.has(student_id)): continue
+		attendance_today.erase(student_id)
+	## Adds unregistered students in attendance.
 	for student_id : String in masterlist:
 		if (attendance_today.has(student_id)): continue
 		attendance_today[student_id] = false
@@ -66,7 +77,7 @@ func _AddStudentPanel(student_id : String) -> void:
 	var name_label : Label = new_student_panel.get_node("Margin/Contents/Name")
 	var remark_label : Label  = new_student_panel.get_node("Margin/Contents/Remark")
 	
-	remark_label.text = attendance_today.get(student_id, false)
+	remark_label.text = "Present" if (attendance_today.get(student_id, false)) else "Absent"
 	name_label.text = masterlist.get(student_id, "NULL")
 	new_student_panel.visible = true
 

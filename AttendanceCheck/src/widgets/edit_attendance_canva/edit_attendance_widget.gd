@@ -15,7 +15,7 @@ func _enter_tree() -> void:
 func InitWidget(passed_data : Dictionary) -> void:
 	super(passed_data)
 	masterlist = passed_data["masterlist"]
-	CreateAttendanceRecordDraft(passed_data)
+	InitDraftAttendance(passed_data)
 	UpdateDisplayedAttendance()
 
 #region Listeners
@@ -27,11 +27,16 @@ func _on_student_checked(checked : bool, student_id : String) -> void:
 #endregion
 
 #region Local
+func InitDraftAttendance(passed_data : Dictionary) -> void:
+	if (not passed_data["attendance_record"].is_empty()): 
+		draft_attendance_record = passed_data["attendance_record"]
+	else:
+		## Initialize draft attendance if no record!
+		for student_id : String in masterlist:
+			draft_attendance_record[student_id] = false
 func UpdateDisplayedAttendance() -> void:
 	Utils.RemoveChildren(list, student_panel)
 	_DisplayStudents()
-func CreateAttendanceRecordDraft(passed_data : Dictionary) -> void:
-	draft_attendance_record = passed_data["attendance_record"].duplicate()
 #endregion
 #region Utils
 func _DisplayStudents() -> void:
