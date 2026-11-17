@@ -2,8 +2,6 @@ extends Resource
 class_name RoomResource
 
 ## Key : student_id, Value: student_name
-@export var masterlist : Dictionary[String, String] = {
-	"001" : "Walid Santos",
-	"002" : "Jared Gabriela",
-	"003" : "Aton Leohvince"
-}
+@export var masterlist : Dictionary[String, String]
+## Key : date, Value: {student_id : is_present}
+@export var attendance : Dictionary[Dictionary,Dictionary]
