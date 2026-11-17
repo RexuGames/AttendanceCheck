@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dqggkno68g3xg" path="res://src/application/room_page/masterlist.gd" id="4_g0tt8"]
 [ext_resource type="Texture2D" uid="uid://box3qnqykpvc8" path="res://assets/ui/edit.svg" id="5_i6mit"]
 [ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="6_f3o30"]
+[ext_resource type="FontFile" uid="uid://bhh7plawvyj1e" path="res://assets/fonts/Inter-Medium.ttf" id="8_mbg3t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh16w"]
 bg_color = Color(1, 1, 1, 1)
@@ -64,6 +65,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 16
 
 [node name="Masterlist" type="Panel" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents" unique_id=502686149]
 custom_minimum_size = Vector2(0, 300)
@@ -145,3 +147,85 @@ text = "Austine Alagdon"
 layout_mode = 2
 theme_type_variation = &"BlackButton"
 text = "View More"
+
+[node name="TodayAttendance" type="Panel" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents" unique_id=1481500026]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance" unique_id=957177215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin" unique_id=2010627393]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Header" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents" unique_id=806489242]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Header" unique_id=1202270267]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_f3o30")
+text = "Attendance Today"
+
+[node name="Total" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Header" unique_id=86789318]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("6_f3o30")
+text = "N/A"
+
+[node name="List" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents" unique_id=482059546]
+visible = false
+custom_minimum_size = Vector2(0, 193)
+custom_maximum_size = Vector2(-1, 193)
+propagate_maximum_size = false
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="StudentPanel" type="Panel" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/List" unique_id=546533576]
+visible = false
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_type_variation = &"SubPanel"
+
+[node name="Margin" type="MarginContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/List/StudentPanel" unique_id=1268143859]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/List/StudentPanel/Margin" unique_id=454158780]
+layout_mode = 2
+
+[node name="Number" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/List/StudentPanel/Margin/Contents" unique_id=145776087]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+text = "1."
+
+[node name="Name" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/List/StudentPanel/Margin/Contents" unique_id=261822463]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Austine Alagdon"
+
+[node name="Label" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents" unique_id=1533963544]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.65882355, 0.65882355, 0.65882355, 1)
+theme_override_fonts/font = ExtResource("8_mbg3t")
+text = "No Record Today"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents" unique_id=296071439]
+layout_mode = 2
+theme_type_variation = &"BlackButton"
+text = "Create Attendance"
