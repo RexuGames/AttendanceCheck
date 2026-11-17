@@ -22,13 +22,14 @@ func _on_page_popped(page : PageCanva) -> void:
 	await _play_page_animation(page_pop_anim)
 	EventBus.page_request_deactivate.emit(self)
 func _on_page_pushed(page : PageCanva, _passed_data : Dictionary) -> void:
-	_page_activated()
+	
 	if (page == self):
 		_play_page_animation(page_push_anim)
+		_page_activated(_passed_data)
 #endregion 
 #region Overridables
 ## Page becomes active
-func _page_activated() -> void: pass 
+func _page_activated(passed_data : Dictionary) -> void: pass 
 ## Page becomes inactive.
 func _page_deactivated() -> void: pass 
 #endregion
