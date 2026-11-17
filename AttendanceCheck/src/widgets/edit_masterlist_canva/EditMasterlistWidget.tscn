@@ -9,8 +9,9 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh16w"]
 bg_color = Color(0, 0, 0, 0.32156864)
 
-[node name="EditMasterlistWidget" type="CanvasLayer" unique_id=1292214106 node_paths=PackedStringArray("list", "student_panel")]
+[node name="EditMasterlistWidget" type="CanvasLayer" unique_id=1292214106 node_paths=PackedStringArray("confirm", "list", "student_panel")]
 script = ExtResource("1_w77mr")
+confirm = NodePath("MarginContainer/Panel/MarginContainer/Contents/Options/Confirm")
 list = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List")
 student_panel = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List/StudentPanel")
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"

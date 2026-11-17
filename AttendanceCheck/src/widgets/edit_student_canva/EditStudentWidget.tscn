@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://bibkb4ckjgf16"]
+
+[ext_resource type="Script" uid="uid://c6ee0o55k5jcn" path="res://src/widgets/WidgetCanva.gd" id="1_r8wq0"]
+[ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="2_f2sbe"]
+[ext_resource type="Texture2D" uid="uid://p1ml4thew6pf" path="res://assets/ui/add.svg" id="3_cudko"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twplr"]
+bg_color = Color(0, 0, 0, 0.32156864)
+
+[node name="EditStudentWidget" type="CanvasLayer" unique_id=516855817]
+script = ExtResource("1_r8wq0")
+metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
+
+[node name="Close" type="Button" parent="." unique_id=78855502]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_twplr")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=582400423]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_f2sbe")
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1978820330]
+custom_minimum_size = Vector2(0, 158)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=215644839]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1376194785]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Header" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1412731466]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/Panel/MarginContainer/Contents/Header" unique_id=1904038612]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Edit Masterlist"
+
+[node name="Edit" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Header" unique_id=1430906436]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+
+[node name="TextureButton" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Contents/Header/Edit" unique_id=1800228518]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -12.0
+offset_right = 9.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cudko")
+stretch_mode = 5
+
+[node name="Edit" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1053920236]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/Contents/Edit" unique_id=1756547350]
+layout_mode = 2
+text = "Student Name"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/Panel/MarginContainer/Contents/Edit" unique_id=137336243]
+layout_mode = 2
+
+[node name="Options" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1526324139]
+layout_mode = 2
+
+[node name="Close" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Options" unique_id=1911783373]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Close"
+
+[node name="Confirm" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Options" unique_id=1561416960]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Confirm"
