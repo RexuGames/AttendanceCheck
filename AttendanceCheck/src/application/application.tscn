@@ -34,11 +34,13 @@ student_panel = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Co
 list = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List")
 edit = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header/Edit")
 
-[node name="TodayAttendance" type="Node" parent="InactivePages/RoomPage" unique_id=643804179 node_paths=PackedStringArray("list", "attendance_container", "no_record_container")]
+[node name="TodayAttendance" type="Node" parent="InactivePages/RoomPage" unique_id=643804179 node_paths=PackedStringArray("list", "student_panel", "attendance_container", "no_record_container", "record_attendance")]
 script = ExtResource("5_y01ik")
 list = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance/List")
+student_panel = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance/List/StudentPanel")
 attendance_container = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance")
 no_record_container = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/NoRecord")
+record_attendance = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/NoRecord/RecordAttendance")
 
 [node name="Background" type="Panel" parent="InactivePages/RoomPage" unique_id=1633302386]
 offset_right = 360.0
@@ -230,7 +232,7 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 14
 text = "Austine Alagdon"
 
-[node name="Name2" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance/List/StudentPanel/Margin/Contents" unique_id=1289772548]
+[node name="Remark" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance/List/StudentPanel/Margin/Contents" unique_id=1289772548]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 8

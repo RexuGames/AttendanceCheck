@@ -95,6 +95,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 8
 
 [node name="StudentPanel" type="Panel" parent="Panel/MarginContainer/Contents/Attendance/MarginContainer/Contents/ScrollContainer/List" unique_id=814110389]
+visible = false
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_type_variation = &"SubPanel"

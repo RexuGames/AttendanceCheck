@@ -11,5 +11,5 @@ func _page_activated(passed_data : Dictionary) -> void:
 #region Local
 func InitHandlers(room : RoomResource) -> void:
 	masterlist_handler.Init(room.masterlist)
-	today_attendance.Init(room.attendance)
+	today_attendance.Init(room.attendance_history, room.masterlist)
 #endregion
