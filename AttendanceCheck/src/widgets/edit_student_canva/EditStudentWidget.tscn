@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bibkb4ckjgf16"]
 
 [ext_resource type="Script" uid="uid://dma3p0ilwk0y8" path="res://src/widgets/edit_student_canva/edit_student_widget.gd" id="1_c1647"]
+[ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="2_cudko"]
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="2_f2sbe"]
 [ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="3_f2sbe"]
 
@@ -12,6 +13,7 @@ script = ExtResource("1_c1647")
 title = NodePath("MarginContainer/Panel/MarginContainer/Contents/Header/Title")
 name_edit = NodePath("MarginContainer/Panel/MarginContainer/Contents/Edit/NameEdit")
 done = NodePath("MarginContainer/Panel/MarginContainer/Contents/Options/Done")
+destroy_on_popped = true
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
 
 [node name="Close" type="Button" parent="." unique_id=78855502]
@@ -21,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_twplr")
+script = ExtResource("2_cudko")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=582400423]
 anchors_preset = 15
@@ -78,6 +81,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"GrayButton"
 text = "Close"
+script = ExtResource("2_cudko")
 
 [node name="Done" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Options" unique_id=1561416960]
 layout_mode = 2

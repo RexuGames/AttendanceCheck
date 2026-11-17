@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cnhm57j3b81e1" path="res://src/widgets/edit_masterlist_canva/edit_masterlist_widget.gd" id="1_w77mr"]
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="2_5ek7u"]
+[ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="2_bjfth"]
 [ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="3_d5k3m"]
 [ext_resource type="Texture2D" uid="uid://p1ml4thew6pf" path="res://assets/ui/add.svg" id="3_w7dco"]
 [ext_resource type="Texture2D" uid="uid://bkde1jluar7al" path="res://assets/ui/edit_filled.svg" id="4_w77mr"]
@@ -16,6 +17,7 @@ confirm = NodePath("MarginContainer/Panel/MarginContainer/Contents/Options/Confi
 list = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List")
 student_panel = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List/StudentPanel")
 add_student = NodePath("MarginContainer/Panel/MarginContainer/Contents/Header/AddStudent")
+destroy_on_popped = true
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
 
 [node name="Close" type="Button" parent="." unique_id=1373781364]
@@ -25,6 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_dh16w")
+script = ExtResource("2_bjfth")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1355040495]
 anchors_preset = 15
@@ -132,6 +135,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"GrayButton"
 text = "Close"
+script = ExtResource("2_bjfth")
 
 [node name="Confirm" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Options" unique_id=1154974211]
 layout_mode = 2
