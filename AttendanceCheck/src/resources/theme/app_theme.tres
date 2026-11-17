@@ -3,6 +3,9 @@
 [ext_resource type="FontFile" uid="uid://bhh7plawvyj1e" path="res://assets/fonts/Inter-Medium.ttf" id="1_kdwm7"]
 [ext_resource type="FontFile" uid="uid://dg7bp6l4xdcl1" path="res://assets/fonts/Inter-Regular.ttf" id="1_w2816"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbynw"]
+bg_color = Color(1, 1, 1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1647"]
 content_margin_top = 5.0
 content_margin_bottom = 5.0
@@ -43,6 +46,8 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
+BackgroundPanel/base_type = &"Panel"
+BackgroundPanel/styles/panel = SubResource("StyleBoxFlat_pbynw")
 BlackButton/base_type = &"Button"
 BlackButton/fonts/font = ExtResource("1_kdwm7")
 BlackButton/styles/hover = SubResource("StyleBoxFlat_c1647")
