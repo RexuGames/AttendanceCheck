@@ -4,6 +4,7 @@ extends WidgetCanva
 @export var confirm: Button
 @export var list: VBoxContainer
 @export var student_panel: Panel
+@export var add_student: Button
 
 
 var draft_masterlist : Dictionary[String, String]
@@ -11,6 +12,7 @@ var draft_masterlist : Dictionary[String, String]
 func _enter_tree() -> void:
 	super()
 	Utils.SafeConnect(confirm.pressed, _on_confirm_pressed)
+	Utils.SafeConnect(add_student.pressed, _on_add_student_pressed)
 
 func InitWidget(passed_data : Dictionary) -> void:
 	super(passed_data)
@@ -18,6 +20,12 @@ func InitWidget(passed_data : Dictionary) -> void:
 	UpdateDisplayedMasterlist()
 
 #region Listeners
+func _on_add_student_pressed() -> void:
+	Widgets.CreateEditStudent("", true, 
+	func(new_student_name : String):
+		draft_masterlist[Utils.GenerateUUID()] = new_student_name
+		UpdateDisplayedMasterlist()
+		)
 func _on_confirm_pressed() -> void:
 	edit_confirmed.emit(draft_masterlist)
 	CloseWidget()

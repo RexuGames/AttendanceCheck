@@ -9,11 +9,15 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh16w"]
 bg_color = Color(0, 0, 0, 0.32156864)
 
-[node name="EditMasterlistWidget" type="CanvasLayer" unique_id=1292214106 node_paths=PackedStringArray("confirm", "list", "student_panel")]
+[node name="EditMasterlistWidget" type="CanvasLayer" unique_id=1292214106 node_paths=PackedStringArray("confirm", "list", "student_panel", "add_student")]
 script = ExtResource("1_w77mr")
 confirm = NodePath("MarginContainer/Panel/MarginContainer/Contents/Options/Confirm")
 list = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List")
 student_panel = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List/StudentPanel")
+add_student = NodePath("MarginContainer/Panel/MarginContainer/Contents/Header/AddStudent")
+destroy_on_popped = null
+page_pop_anim = null
+page_push_anim = null
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
 
 [node name="Close" type="Button" parent="." unique_id=1373781364]
@@ -56,11 +60,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Edit Masterlist"
 
-[node name="Edit" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Header" unique_id=1949390854]
+[node name="AddStudent" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Header" unique_id=1949390854]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 
-[node name="TextureButton" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Contents/Header/Edit" unique_id=629811934]
+[node name="TextureButton" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Contents/Header/AddStudent" unique_id=629811934]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

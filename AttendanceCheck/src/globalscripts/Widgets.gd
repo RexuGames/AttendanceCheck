@@ -2,7 +2,20 @@ extends Node
 
 #region Global
 func CreateEditMasterlist(masterlist : Dictionary[String,String], _on_confirmed : Callable) -> void:
-	_CreateWidget({"masterlist":masterlist}, load("res://src/widgets/edit_masterlist_canva/EditMasterlistWidget.tscn"), _on_confirmed)
+	_CreateWidget(
+		{
+			"masterlist": masterlist
+		}, 
+		load("res://src/widgets/edit_masterlist_canva/EditMasterlistWidget.tscn"),
+		 _on_confirmed)
+func CreateEditStudent(name : String, is_adding : bool, _on_confirmed : Callable) -> void:
+	_CreateWidget(
+		{
+			"name" : name,
+			"is_adding": is_adding
+		},
+		load("uid://bibkb4ckjgf16"),
+		_on_confirmed)
 #endregion
 
 #region Utils
