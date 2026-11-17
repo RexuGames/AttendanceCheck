@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="4_7nc0p"]
 [ext_resource type="Script" uid="uid://dqggkno68g3xg" path="res://src/application/room_page/masterlist.gd" id="4_g0tt8"]
 [ext_resource type="Texture2D" uid="uid://box3qnqykpvc8" path="res://assets/ui/edit.svg" id="5_i6mit"]
+[ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="6_f3o30"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh16w"]
 bg_color = Color(1, 1, 1, 1)
@@ -78,6 +79,7 @@ grow_vertical = 2
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin" unique_id=1974057319]
 layout_mode = 2
+theme_override_constants/separation = 6
 
 [node name="Header" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents" unique_id=526255254]
 layout_mode = 2
@@ -85,6 +87,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header" unique_id=2046841440]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_f3o30")
 text = "Master List"
 
 [node name="Edit" type="TextureButton" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header" unique_id=1542679338]
@@ -98,6 +101,7 @@ theme_override_constants/separation = 16
 
 [node name="Name" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/ListHead" unique_id=866757323]
 layout_mode = 2
+theme_override_font_sizes/font_size = 14
 text = "Student Name"
 
 [node name="List" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents" unique_id=1040074789]
@@ -139,4 +143,5 @@ text = "Austine Alagdon"
 
 [node name="Button" type="Button" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents" unique_id=1244212589]
 layout_mode = 2
+theme_type_variation = &"BlackButton"
 text = "View More"

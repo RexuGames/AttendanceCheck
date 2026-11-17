@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dma3p0ilwk0y8" path="res://src/widgets/edit_student_canva/edit_student_widget.gd" id="1_c1647"]
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="2_f2sbe"]
+[ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="3_f2sbe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twplr"]
 bg_color = Color(0, 0, 0, 0.32156864)
@@ -30,7 +31,7 @@ grow_vertical = 2
 theme = ExtResource("2_f2sbe")
 
 [node name="Panel" type="Panel" parent="MarginContainer" unique_id=1978820330]
-custom_minimum_size = Vector2(0, 158)
+custom_minimum_size = Vector2(0, 165.335)
 layout_mode = 2
 size_flags_vertical = 4
 
@@ -44,7 +45,7 @@ grow_vertical = 2
 
 [node name="Contents" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1376194785]
 layout_mode = 2
-theme_override_constants/separation = 11
+theme_override_constants/separation = 12
 
 [node name="Header" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1412731466]
 layout_mode = 2
@@ -52,6 +53,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="MarginContainer/Panel/MarginContainer/Contents/Header" unique_id=1904038612]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_f2sbe")
 text = "Edit Student"
 horizontal_alignment = 1
 
@@ -60,10 +62,13 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/Contents/Edit" unique_id=1756547350]
 layout_mode = 2
+theme_override_font_sizes/font_size = 14
 text = "Student Name"
 
 [node name="NameEdit" type="LineEdit" parent="MarginContainer/Panel/MarginContainer/Contents/Edit" unique_id=137336243]
 layout_mode = 2
+placeholder_text = "Student Name"
+alignment = 1
 
 [node name="Options" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1526324139]
 layout_mode = 2
@@ -71,9 +76,11 @@ layout_mode = 2
 [node name="Close" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Options" unique_id=1911783373]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"GrayButton"
 text = "Close"
 
 [node name="Done" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Options" unique_id=1561416960]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_type_variation = &"BlackButton"
 text = "Done"
