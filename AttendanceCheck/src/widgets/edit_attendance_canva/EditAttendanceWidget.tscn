@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://djcivr887hble" path="res://src/widgets/edit_attendance_canva/edit_attendance_widget.gd" id="1_274ss"]
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="2_274ss"]
 [ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="3_8h6em"]
+[ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="4_8h6em"]
 
 [node name="EditAttendanceWidget" type="CanvasLayer" unique_id=1457072405 node_paths=PackedStringArray("list", "student_panel", "done")]
 script = ExtResource("1_274ss")
@@ -144,3 +145,4 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"GrayButton"
 text = "Cancel"
+script = ExtResource("4_8h6em")
