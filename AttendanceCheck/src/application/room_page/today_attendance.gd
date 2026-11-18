@@ -7,6 +7,8 @@ extends Node
 @export var attendance_container: VBoxContainer
 @export var no_record_container: VBoxContainer
 @export var record_attendance: Button
+@export var total_label: Label
+
 
 var masterlist : Dictionary[String,String]
 var attendance_today : Dictionary[String, bool]
@@ -20,15 +22,17 @@ func _on_masterlist_updated(new_masterlist : Dictionary) -> void:
 	masterlist = new_masterlist
 	UpdateAttendanceTodayStudents() 
 	UpdateDisplayedAttendance()
+	UpdateAttendanceCount()
 func _on_record_attendance_pressed() -> void:
 	if (masterlist.is_empty()):
 		ToastCreator.show_toast("Please add students first!")
 		return
-	Widgets.CreateEditAttendance(attendance_today, masterlist, 
+	Widgets.CreateEditAttendance(attendance_today, masterlist, "", GetDateToday(), 
 		func(new_record : Dictionary):
 			attendance_today = new_record
 			UpdateDisplayedAttendance()
 			UpdateStateContainers()
+			UpdateAttendanceCount()
 			)
 	pass
 #endregion
@@ -42,6 +46,18 @@ func Init(attendance_history : Dictionary[Dictionary,Dictionary], masterlist : D
 #endregion
 
 #region Local
+func UpdateAttendanceCount() -> void:
+	
+	if (attendance_today.is_empty()):
+		total_label.text = "N/A"
+		return
+	var total_present : int = 0
+	
+	for is_present : bool in attendance_today.values():
+		if (not is_present): continue
+		total_present += 1
+	
+	total_label.text = "%d/%d" % [total_present, attendance_today.size()]
 ## If has attendance record today Show Attendance List else show no record container
 func UpdateStateContainers() -> void:
 	if (attendance_today.is_empty()):

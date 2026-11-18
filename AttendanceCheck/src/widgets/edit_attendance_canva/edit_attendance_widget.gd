@@ -1,9 +1,11 @@
 extends WidgetCanva
 
 @export_group("References")
+@export var attendance_info: Node
 @export var list: VBoxContainer
 @export var student_panel: Panel
 @export var done: Button
+@export var date: Label
 
 var masterlist : Dictionary[String, String]
 var draft_attendance_record : Dictionary[String, bool]
@@ -15,6 +17,7 @@ func _enter_tree() -> void:
 func InitWidget(passed_data : Dictionary) -> void:
 	super(passed_data)
 	masterlist = passed_data["masterlist"]
+	attendance_info.Init(passed_data["date"])
 	InitDraftAttendance(passed_data)
 	UpdateDisplayedAttendance()
 

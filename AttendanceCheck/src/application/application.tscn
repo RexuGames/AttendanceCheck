@@ -34,13 +34,14 @@ student_panel = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Co
 list = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List")
 edit = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header/Edit")
 
-[node name="TodayAttendance" type="Node" parent="InactivePages/RoomPage" unique_id=643804179 node_paths=PackedStringArray("list", "student_panel", "attendance_container", "no_record_container", "record_attendance")]
+[node name="TodayAttendance" type="Node" parent="InactivePages/RoomPage" unique_id=643804179 node_paths=PackedStringArray("list", "student_panel", "attendance_container", "no_record_container", "record_attendance", "total_label")]
 script = ExtResource("5_y01ik")
 list = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance/List")
 student_panel = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance/List/StudentPanel")
 attendance_container = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance")
 no_record_container = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/NoRecord")
 record_attendance = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/NoRecord/RecordAttendance")
+total_label = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Header/Total")
 
 [node name="Background" type="Panel" parent="InactivePages/RoomPage" unique_id=1633302386]
 offset_right = 360.0

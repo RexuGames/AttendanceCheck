@@ -2,16 +2,23 @@
 
 [ext_resource type="Script" uid="uid://djcivr887hble" path="res://src/widgets/edit_attendance_canva/edit_attendance_widget.gd" id="1_274ss"]
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="2_274ss"]
+[ext_resource type="Script" uid="uid://bjn3us7yri827" path="res://src/widgets/edit_attendance_canva/attendance_info.gd" id="2_xfys7"]
 [ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="3_8h6em"]
 [ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="4_8h6em"]
 
-[node name="EditAttendanceWidget" type="CanvasLayer" unique_id=1457072405 node_paths=PackedStringArray("list", "student_panel", "done")]
+[node name="EditAttendanceWidget" type="CanvasLayer" unique_id=1457072405 node_paths=PackedStringArray("attendance_info", "list", "student_panel", "done", "date")]
 script = ExtResource("1_274ss")
+attendance_info = NodePath("AttendanceInfo")
 list = NodePath("Panel/MarginContainer/Contents/Attendance/MarginContainer/Contents/ScrollContainer/List")
 student_panel = NodePath("Panel/MarginContainer/Contents/Attendance/MarginContainer/Contents/ScrollContainer/List/StudentPanel")
 done = NodePath("Panel/MarginContainer/Contents/Options/Done")
+date = NodePath("Panel/MarginContainer/Contents/Date")
 destroy_on_popped = true
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
+
+[node name="AttendanceInfo" type="Node" parent="." unique_id=1663047505 node_paths=PackedStringArray("date_label")]
+script = ExtResource("2_xfys7")
+date_label = NodePath("../Panel/MarginContainer/Contents/Date")
 
 [node name="Panel" type="Panel" parent="." unique_id=2102676195]
 anchors_preset = 15

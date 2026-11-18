@@ -1,9 +1,16 @@
 extends Node
 
 #region Global
-func CreateEditAttendance(attendance_record : Dictionary[String, bool], masterlist : Dictionary[String,String], _on_confirmed : Callable) -> void:
+func CreateEditAttendance(
+	attendance_record : Dictionary[String, bool], 
+	masterlist : Dictionary[String,String], 
+	room_name : String,
+	date : Dictionary,
+	_on_confirmed : Callable) -> void:
 	_CreateWidget(
 		{
+			"date" : date,
+			"room_name" : room_name,
 			"masterlist": masterlist,
 			"attendance_record": attendance_record
 		}, 
