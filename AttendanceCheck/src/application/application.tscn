@@ -34,13 +34,14 @@ student_panel = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Co
 list = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List")
 edit = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header/Edit")
 
-[node name="TodayAttendance" type="Node" parent="InactivePages/RoomPage" unique_id=643804179 node_paths=PackedStringArray("list", "student_panel", "attendance_container", "no_record_container", "record_attendance", "total_label")]
+[node name="TodayAttendance" type="Node" parent="InactivePages/RoomPage" unique_id=643804179 node_paths=PackedStringArray("list", "student_panel", "attendance_container", "no_record_container", "record_attendance", "view_attendance", "total_label")]
 script = ExtResource("5_y01ik")
 list = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance/List")
 student_panel = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance/List/StudentPanel")
 attendance_container = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance")
 no_record_container = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/NoRecord")
 record_attendance = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/NoRecord/RecordAttendance")
+view_attendance = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance/ViewAttendance")
 total_label = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Header/Total")
 
 [node name="Background" type="Panel" parent="InactivePages/RoomPage" unique_id=1633302386]
@@ -191,7 +192,6 @@ theme_override_fonts/font = ExtResource("6_f3o30")
 text = "N/A"
 
 [node name="Attendance" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents" unique_id=113538263]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -244,7 +244,7 @@ text = "Present"
 [node name="ViewAttendance" type="Button" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance" unique_id=296071439]
 layout_mode = 2
 theme_type_variation = &"BlackButton"
-text = "Null"
+text = "View More"
 
 [node name="NoRecord" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents" unique_id=65771763]
 visible = false

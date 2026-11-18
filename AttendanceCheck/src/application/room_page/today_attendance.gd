@@ -7,6 +7,7 @@ extends Node
 @export var attendance_container: VBoxContainer
 @export var no_record_container: VBoxContainer
 @export var record_attendance: Button
+@export var view_attendance: Button
 @export var total_label: Label
 
 
@@ -15,9 +16,15 @@ var attendance_today : Dictionary[String, bool]
 
 func _enter_tree() -> void:
 	Utils.SafeConnect(record_attendance.pressed, _on_record_attendance_pressed)
+	Utils.SafeConnect(view_attendance.pressed, _on_view_attendance_pressed)
 	Utils.SafeConnect(EventBus.masterlist_updated, _on_masterlist_updated)
 
 #region Listeners
+func _on_view_attendance_pressed() -> void:
+	if (masterlist.is_empty()):
+		ToastCreator.show_toast("Please add students first!")
+		return
+	Widgets.CreateViewAttendance(attendance_today, masterlist, GetDateToday())
 func _on_masterlist_updated(new_masterlist : Dictionary) -> void:
 	masterlist = new_masterlist
 	UpdateAttendanceTodayStudents() 

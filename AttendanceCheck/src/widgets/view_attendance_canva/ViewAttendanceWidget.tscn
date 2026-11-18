@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://1f3tw2pwed3i"]
 
-[ext_resource type="Script" uid="uid://c6ee0o55k5jcn" path="res://src/widgets/WidgetCanva.gd" id="1_8gk2t"]
+[ext_resource type="Script" uid="uid://d36kdvo8ylfsd" path="res://src/widgets/view_attendance_canva/view_attendance_widget.gd" id="1_3eonr"]
 [ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="2_3eonr"]
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="3_jdt7d"]
 [ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="4_in5hw"]
@@ -9,8 +9,11 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ok5lb"]
 bg_color = Color(0, 0, 0, 0.32156864)
 
-[node name="ViewAttendanceWidget" type="CanvasLayer" unique_id=844334420]
-script = ExtResource("1_8gk2t")
+[node name="ViewAttendanceWidget" type="CanvasLayer" unique_id=844334420 node_paths=PackedStringArray("list", "student_panel")]
+script = ExtResource("1_3eonr")
+list = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List")
+student_panel = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List/StudentPanel")
+destroy_on_popped = true
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
 
 [node name="Close" type="Button" parent="." unique_id=364455094]
@@ -56,9 +59,10 @@ size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_in5hw")
 text = "Attendance Today"
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/Panel/MarginContainer/Contents/Header" unique_id=1241498221]
+[node name="Close" type="TextureButton" parent="MarginContainer/Panel/MarginContainer/Contents/Header" unique_id=1241498221]
 layout_mode = 2
 texture_normal = ExtResource("5_dergh")
+script = ExtResource("2_3eonr")
 
 [node name="Info" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=459407890]
 layout_mode = 2
@@ -84,6 +88,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="StudentPanel" type="Panel" parent="MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List" unique_id=1864811956]
+visible = false
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 theme_type_variation = &"SubPanel"
@@ -113,7 +118,7 @@ text = "Present"
 [node name="Options" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1726671425]
 layout_mode = 2
 
-[node name="Done" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Options" unique_id=1675594132]
+[node name="Edit" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Options" unique_id=1675594132]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BlackButton"

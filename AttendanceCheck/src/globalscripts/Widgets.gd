@@ -16,6 +16,17 @@ func CreateEditAttendance(
 		}, 
 		load("uid://dbnsgbg2qwlbg"),
 		 _on_confirmed)
+func CreateViewAttendance(
+	attendance_record : Dictionary[String, bool], 
+	masterlist : Dictionary[String,String], 
+	date : Dictionary) -> void:
+	_CreateWidget(
+		{
+			"date" : date,
+			"masterlist": masterlist,
+			"attendance_record": attendance_record
+		}, 
+		load("uid://1f3tw2pwed3i"),)
 func CreateEditMasterlist(masterlist : Dictionary[String,String], _on_confirmed : Callable) -> void:
 	_CreateWidget(
 		{
@@ -36,7 +47,8 @@ func CreateEditStudent(name : String, is_adding : bool, _on_confirmed : Callable
 #region Utils
 func _CreateWidget(passed_data : Dictionary, widget_packed : PackedScene, _on_edit_confirmed : Callable = Callable()) -> void:
 	var new_widget : WidgetCanva = widget_packed.instantiate()
-	Utils.SafeConnect(new_widget.edit_confirmed, _on_edit_confirmed)
+	if (_on_edit_confirmed.is_valid()):
+		Utils.SafeConnect(new_widget.edit_confirmed, _on_edit_confirmed)
 	add_child(new_widget)
 	new_widget.InitWidget(passed_data)
 #endregion
