@@ -34,7 +34,6 @@ func _on_record_attendance_pressed() -> void:
 			UpdateStateContainers()
 			UpdateAttendanceCount()
 			)
-	pass
 #endregion
 
 #region Global
@@ -42,15 +41,14 @@ func Init(attendance_history : Dictionary[Dictionary,Dictionary], masterlist : D
 	self.masterlist = masterlist
 	self.attendance_today = attendance_today
 	UpdateStateContainers()
-
 #endregion
 
 #region Local
 func UpdateAttendanceCount() -> void:
-	
 	if (attendance_today.is_empty()):
 		total_label.text = "N/A"
 		return
+	
 	var total_present : int = 0
 	
 	for is_present : bool in attendance_today.values():
@@ -98,7 +96,6 @@ func _AddStudentPanel(student_id : String) -> void:
 	new_student_panel.visible = true
 
 	list.add_child(new_student_panel)
-
 func ToggleAttendanceContainer(is_toggled : bool) -> void:
 	attendance_container.visible = is_toggled
 	no_record_container.visible = not is_toggled
