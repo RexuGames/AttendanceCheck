@@ -21,9 +21,6 @@ func _enter_tree() -> void:
 
 #region Listeners
 func _on_view_attendance_pressed() -> void:
-	if (masterlist.is_empty()):
-		ToastCreator.show_toast("Please add students first!")
-		return
 	Widgets.CreateViewAttendance(attendance_today, masterlist, GetDateToday())
 func _on_masterlist_updated(new_masterlist : Dictionary) -> void:
 	masterlist = new_masterlist
