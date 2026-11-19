@@ -11,9 +11,12 @@ var rooms : Array[RoomResource]
 func _enter_tree() -> void:
 	Utils.SafeConnect(EventBus.room_edited, _on_room_edited)
 	Utils.SafeConnect(EventBus.rooms_updated, _on_rooms_updated)
+	Utils.SafeConnect(EventBus.masterlist_updated, _on_masterlist_updated)
 	Utils.SafeConnect(EventBus.userdata_loaded, _on_userdata_loaded)
 	Utils.SafeConnect(create_room.pressed, _on_createroom_pressed)
 #region Listeners
+func _on_masterlist_updated(_masterlist : Dictionary) -> void:
+	UpdateDisplayedRooms()
 func _on_room_edited(room : RoomResource) -> void:
 	UpdateDisplayedRooms()
 	pass
@@ -50,7 +53,7 @@ func _AddRoomPanel(room : RoomResource) -> void:
 	var open_button : BaseButton = new_room_panel.get_node("Margin/Contents/Open")
 	Utils.SafeConnect(open_button.pressed, _on_room_open.bind(room))
 	name_label.text = room.name
-	students_label.text = str(room.masterlist.size())
+	students_label.text = "%d Students" % room.masterlist.size()
 	new_room_panel.visible = true
 	list.add_child(new_room_panel)
 #endregion
