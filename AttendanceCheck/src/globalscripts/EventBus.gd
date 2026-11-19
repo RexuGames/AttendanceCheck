@@ -3,6 +3,7 @@ extends Node
 
 
 #region Data
+@warning_ignore("unused_signal") signal attendance_updated(new_record : Dictionary, date : Dictionary)
 @warning_ignore("unused_signal") signal masterlist_updated(new_masterlist : Dictionary)
 #endregion
 

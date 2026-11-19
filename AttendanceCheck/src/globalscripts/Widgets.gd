@@ -12,7 +12,7 @@ func CreateEditAttendance(
 			"date" : date,
 			"room_name" : room_name,
 			"masterlist": masterlist,
-			"attendance_record": attendance_record
+			"attendance_record": attendance_record.duplicate()
 		}, 
 		load("uid://dbnsgbg2qwlbg"),
 		 _on_confirmed)

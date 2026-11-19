@@ -18,10 +18,17 @@ func _enter_tree() -> void:
 	Utils.SafeConnect(record_attendance.pressed, _on_record_attendance_pressed)
 	Utils.SafeConnect(view_attendance.pressed, _on_view_attendance_pressed)
 	Utils.SafeConnect(EventBus.masterlist_updated, _on_masterlist_updated)
+	Utils.SafeConnect(EventBus.attendance_updated, _on_attendance_updated)
 
 #region Listeners
 func _on_view_attendance_pressed() -> void:
 	Widgets.CreateViewAttendance(attendance_today, masterlist, GetDateToday())
+func _on_attendance_updated(new_record : Dictionary, date : Dictionary):
+	if not (date == GetDateToday()): return
+	attendance_today = new_record
+	UpdateDisplayedAttendance()
+	UpdateStateContainers()
+	UpdateAttendanceCount()
 func _on_masterlist_updated(new_masterlist : Dictionary) -> void:
 	masterlist = new_masterlist
 	UpdateAttendanceTodayStudents() 
@@ -33,10 +40,7 @@ func _on_record_attendance_pressed() -> void:
 		return
 	Widgets.CreateEditAttendance(attendance_today, masterlist, "", GetDateToday(), 
 		func(new_record : Dictionary):
-			attendance_today = new_record
-			UpdateDisplayedAttendance()
-			UpdateStateContainers()
-			UpdateAttendanceCount()
+			EventBus.attendance_updated.emit(new_record, GetDateToday())
 			)
 #endregion
 
