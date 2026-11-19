@@ -1,10 +1,10 @@
 extends Node
 
 #region Global
-func CreateEditRoom(name : String, is_adding : bool, _on_confirmed : Callable) -> void:
+func CreateEditRoom(room : RoomResource, is_adding : bool, _on_confirmed : Callable) -> void:
 	_CreateWidget(
 		{
-			"name" : name,
+			"room" : room,
 			"is_adding": is_adding
 		},
 		load("uid://b362hslfe2hxd"),

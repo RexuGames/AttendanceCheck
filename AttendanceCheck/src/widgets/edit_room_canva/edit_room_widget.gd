@@ -5,6 +5,7 @@ extends WidgetCanva
 @export var title: Label
 @export var name_edit: LineEdit
 
+var room_draft : RoomResource
 
 func _enter_tree() -> void:
 	super()
@@ -13,10 +14,13 @@ func _enter_tree() -> void:
 func InitWidget(passed_data : Dictionary) -> void:
 	super(passed_data)
 	title.text = "Create Room" if (passed_data["is_adding"]) else "Edit Room"
-	name_edit.text = passed_data["name"]
+	room_draft = passed_data["room"].duplicate()
+	name_edit.text = room_draft.name
+	
 
 #region Listeners
 func _on_done_pressed() -> void:
-	edit_confirmed.emit(name_edit.text)
+	room_draft.name = name_edit.text
+	edit_confirmed.emit(room_draft)
 	CloseWidget()
 #endregion
