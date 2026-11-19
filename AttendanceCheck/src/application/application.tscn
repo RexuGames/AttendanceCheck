@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="4_7nc0p"]
 [ext_resource type="Script" uid="uid://dqggkno68g3xg" path="res://src/application/room_page/masterlist.gd" id="4_g0tt8"]
 [ext_resource type="Texture2D" uid="uid://box3qnqykpvc8" path="res://assets/ui/edit.svg" id="5_i6mit"]
+[ext_resource type="Script" uid="uid://buutp80yjtogd" path="res://src/application/home_page/rooms/room_handler.gd" id="5_rdayr"]
 [ext_resource type="Script" uid="uid://ywx4d5vcwg45" path="res://src/application/room_page/today_attendance.gd" id="5_y01ik"]
 [ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="6_f3o30"]
 [ext_resource type="Texture2D" uid="uid://p1ml4thew6pf" path="res://assets/ui/add.svg" id="6_h5o70"]
@@ -50,6 +51,9 @@ theme = ExtResource("4_7nc0p")
 
 [node name="Rooms" type="Control" parent="InactivePages/HomePage/Margin" unique_id=141425210]
 layout_mode = 2
+
+[node name="RoomHandler" type="Node" parent="InactivePages/HomePage/Margin/Rooms" unique_id=1773812971]
+script = ExtResource("5_rdayr")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Rooms" unique_id=537392068]
 layout_mode = 1
@@ -103,6 +107,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 8
 
 [node name="Room" type="Panel" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents" unique_id=1323761510]
+visible = false
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_type_variation = &"SubPanel"
@@ -167,154 +172,6 @@ theme_override_font_sizes/font_size = 11
 text = "11 Students"
 
 [node name="Open" type="Button" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room/Margin/Contents" unique_id=389231022]
-custom_minimum_size = Vector2(75, 35)
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-theme_type_variation = &"BlackButton"
-theme_override_fonts/font = ExtResource("6_f3o30")
-theme_override_font_sizes/font_size = 11
-text = "OPEN"
-
-[node name="Room2" type="Panel" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents" unique_id=1557908687]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-theme_type_variation = &"SubPanel"
-
-[node name="Margin" type="MarginContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room2" unique_id=121440846]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Contents" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room2/Margin" unique_id=16691920]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="Icon" type="Panel" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room2/Margin/Contents" unique_id=255358]
-custom_minimum_size = Vector2(44, 44)
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Texture" type="TextureRect" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room2/Margin/Contents/Icon" unique_id=204374969]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.5
-offset_top = -15.5
-offset_right = 15.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_jpn0h")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Info" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room2/Margin/Contents" unique_id=127431932]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Name" type="Label" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room2/Margin/Contents/Info" unique_id=1120727854]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_f3o30")
-text = "12 Ryzen ICT A"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room2/Margin/Contents/Info" unique_id=227229118]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room2/Margin/Contents/Info/HBoxContainer" unique_id=1885944869]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 2
-texture = ExtResource("7_jpn0h")
-expand_mode = 1
-
-[node name="Students" type="Label" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room2/Margin/Contents/Info/HBoxContainer" unique_id=1360182845]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_mbg3t")
-theme_override_font_sizes/font_size = 11
-text = "11 Students"
-
-[node name="Open" type="Button" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room2/Margin/Contents" unique_id=518145865]
-custom_minimum_size = Vector2(75, 35)
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 4
-theme_type_variation = &"BlackButton"
-theme_override_fonts/font = ExtResource("6_f3o30")
-theme_override_font_sizes/font_size = 11
-text = "OPEN"
-
-[node name="Room3" type="Panel" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents" unique_id=1669425480]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-theme_type_variation = &"SubPanel"
-
-[node name="Margin" type="MarginContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room3" unique_id=1380571545]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Contents" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room3/Margin" unique_id=1232822732]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="Icon" type="Panel" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room3/Margin/Contents" unique_id=1730685380]
-custom_minimum_size = Vector2(44, 44)
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Texture" type="TextureRect" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room3/Margin/Contents/Icon" unique_id=1136198277]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.5
-offset_top = -15.5
-offset_right = 15.5
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_jpn0h")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Info" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room3/Margin/Contents" unique_id=563088561]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Name" type="Label" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room3/Margin/Contents/Info" unique_id=1623537815]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_f3o30")
-text = "12 Ryzen ICT A"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room3/Margin/Contents/Info" unique_id=169860915]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room3/Margin/Contents/Info/HBoxContainer" unique_id=1190608840]
-custom_minimum_size = Vector2(15, 15)
-layout_mode = 2
-texture = ExtResource("7_jpn0h")
-expand_mode = 1
-
-[node name="Students" type="Label" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room3/Margin/Contents/Info/HBoxContainer" unique_id=634084078]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_mbg3t")
-theme_override_font_sizes/font_size = 11
-text = "11 Students"
-
-[node name="Open" type="Button" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/Contents/Room3/Margin/Contents" unique_id=828885206]
 custom_minimum_size = Vector2(75, 35)
 layout_mode = 2
 size_flags_horizontal = 10
