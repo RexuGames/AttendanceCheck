@@ -13,6 +13,7 @@ extends Node
 
 var masterlist : Dictionary[String,String]
 var attendance_today : Dictionary[String, bool]
+var attendance_history : Dictionary[Dictionary,Dictionary]
 
 func _enter_tree() -> void:
 	Utils.SafeConnect(record_attendance.pressed, _on_record_attendance_pressed)
@@ -25,7 +26,7 @@ func _on_view_attendance_pressed() -> void:
 	Widgets.CreateViewAttendance(attendance_today, masterlist, GetDateToday())
 func _on_attendance_updated(new_record : Dictionary, date : Dictionary):
 	if not (date == GetDateToday()): return
-	attendance_today = new_record
+	UpdateAttendanceToday(new_record)
 	UpdateDisplayedAttendance()
 	UpdateStateContainers()
 	UpdateAttendanceCount()
@@ -47,11 +48,20 @@ func _on_record_attendance_pressed() -> void:
 #region Global
 func Init(attendance_history : Dictionary[Dictionary,Dictionary], masterlist : Dictionary[String,String]) -> void:
 	self.masterlist = masterlist
-	self.attendance_today = attendance_today
+	self.attendance_history = attendance_history
+	self.attendance_today = _FindAttendanceInHistory(GetDateToday())
+	
+	Log.pr(attendance_today)
 	UpdateStateContainers()
+	UpdateDisplayedAttendance()
+	UpdateAttendanceCount()
 #endregion
 
 #region Local
+func UpdateAttendanceToday(new_record : Dictionary[String,bool]) -> void:
+	attendance_today.clear()
+	attendance_today.merge(new_record)
+	attendance_history[GetDateToday()] = attendance_today
 func UpdateAttendanceCount() -> void:
 	if (attendance_today.is_empty()):
 		total_label.text = "N/A"
@@ -91,6 +101,16 @@ func UpdateDisplayedAttendance() -> void:
 #endregion
 
 #region Utils
+func _FindAttendanceInHistory(find_date : Dictionary) -> Dictionary[String,bool]:
+	for date : Dictionary in attendance_history:
+		if (_IsDateMatch(date, find_date)):
+			return attendance_history[date]
+	return {} as Dictionary[String, bool]
+func _IsDateMatch(date_a : Dictionary, date_b : Dictionary) -> bool:
+	var matching : Array[String] = ["year", "month", "day", "weekday"]
+	for key : String in matching:
+		if not (date_a[key] == date_b[key]): return false
+	return true
 func _DisplayStudents() -> void:
 	for student_id : String in attendance_today:
 		_AddStudentPanel(student_id)
@@ -108,6 +128,6 @@ func ToggleAttendanceContainer(is_toggled : bool) -> void:
 	attendance_container.visible = is_toggled
 	no_record_container.visible = not is_toggled
 	pass
-func GetDateToday() -> Dictionary:
+func GetDateToday() -> Dictionary: # DEPRECATE
 	return Time.get_date_dict_from_system()
 #endregion

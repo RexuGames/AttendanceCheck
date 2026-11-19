@@ -24,11 +24,11 @@ func GenerateUUID() -> String:
 		hex.substr(16, 4),
 		hex.substr(20, 12)
 	]
-
 func SafeConnect(event : Signal, callback : Callable):
 	if (event.is_connected(callback)): return
 	event.connect(callback) 
-
+func GetLocalUnixTime() -> float:
+	return Time.get_unix_time_from_datetime_dict(Time.get_datetime_dict_from_system())
 ## Frees all children.
 func RemoveChildren(parent : Node, ...exceptions : Array):
 	for node : Node in parent.get_children():
