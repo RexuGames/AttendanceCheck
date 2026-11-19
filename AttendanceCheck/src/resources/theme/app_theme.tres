@@ -1,5 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://cxn5wxi13xdg"]
 
+[ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="1_gfv7f"]
 [ext_resource type="FontFile" uid="uid://bhh7plawvyj1e" path="res://assets/fonts/Inter-Medium.ttf" id="1_kdwm7"]
 [ext_resource type="FontFile" uid="uid://dg7bp6l4xdcl1" path="res://assets/fonts/Inter-Regular.ttf" id="1_w2816"]
 
@@ -25,18 +26,20 @@ corner_radius_bottom_right = 9
 corner_radius_bottom_left = 9
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5k3m"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
 bg_color = Color(0.9137255, 0.9137255, 0.9137255, 1)
-corner_radius_top_left = 9
-corner_radius_top_right = 9
-corner_radius_bottom_right = 9
-corner_radius_bottom_left = 9
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nc0p"]
 bg_color = Color(0.96913654, 0.96913713, 0.96913666, 1)
-corner_radius_top_left = 9
-corner_radius_top_right = 9
-corner_radius_bottom_right = 9
-corner_radius_bottom_left = 9
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2816"]
 bg_color = Color(0.8776142, 0.8776164, 0.87761515, 1)
@@ -49,7 +52,7 @@ corner_radius_bottom_left = 10
 BackgroundPanel/base_type = &"Panel"
 BackgroundPanel/styles/panel = SubResource("StyleBoxFlat_pbynw")
 BlackButton/base_type = &"Button"
-BlackButton/fonts/font = ExtResource("1_kdwm7")
+BlackButton/fonts/font = ExtResource("1_gfv7f")
 BlackButton/styles/hover = SubResource("StyleBoxFlat_c1647")
 BlackButton/styles/normal = SubResource("StyleBoxFlat_c1647")
 BlackButton/styles/pressed = SubResource("StyleBoxFlat_c1647")

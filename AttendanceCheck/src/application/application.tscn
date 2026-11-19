@@ -14,7 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://cgp1ya63jd6ho" path="res://assets/ui/room_icons/cases.svg" id="6_jpn0h"]
 [ext_resource type="Texture2D" uid="uid://cb6pigq4dkn4p" path="res://assets/ui/school.svg" id="7_jpn0h"]
 [ext_resource type="FontFile" uid="uid://bhh7plawvyj1e" path="res://assets/fonts/Inter-Medium.ttf" id="8_mbg3t"]
+[ext_resource type="Texture2D" uid="uid://dkcaar5ok2xhk" path="res://assets/ui/toggled_on.svg" id="12_83q5b"]
 [ext_resource type="Script" uid="uid://dbp103531b7n2" path="res://src/application/room_page/room_info.gd" id="12_jdbx5"]
+[ext_resource type="Texture2D" uid="uid://byrhspphl1os1" path="res://assets/ui/delete.svg" id="12_q22wi"]
+[ext_resource type="Texture2D" uid="uid://bb6dibqckytpn" path="res://assets/ui/toggled_off.svg" id="13_67fnb"]
 [ext_resource type="Texture2D" uid="uid://b6l4qq7e2goot" path="res://assets/ui/close.svg" id="14_fpovm"]
 [ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="15_m83oe"]
 
@@ -55,12 +58,16 @@ theme = ExtResource("4_7nc0p")
 [node name="Rooms" type="Control" parent="InactivePages/HomePage/Margin" unique_id=141425210]
 layout_mode = 2
 
-[node name="RoomHandler" type="Node" parent="InactivePages/HomePage/Margin/Rooms" unique_id=1773812971 node_paths=PackedStringArray("room_panel", "list", "create_room", "room_page")]
+[node name="RoomHandler" type="Node" parent="InactivePages/HomePage/Margin/Rooms" unique_id=1773812971 node_paths=PackedStringArray("room_button", "list", "create_room", "room_page", "edit_rooms", "room_edit_actions", "edit_cancel", "edit_delete")]
 script = ExtResource("5_rdayr")
-room_panel = NodePath("../Contents/Body/List/Room")
+room_button = NodePath("../Contents/Body/List/Room")
 list = NodePath("../Contents/Body/List")
 create_room = NodePath("../Contents/Header/CreateRoom")
 room_page = NodePath("../../../../RoomPage")
+edit_rooms = NodePath("../Contents/Header/EditRooms")
+room_edit_actions = NodePath("../RoomEditActions")
+edit_cancel = NodePath("../RoomEditActions/Cancel")
+edit_delete = NodePath("../RoomEditActions/Delete")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Rooms" unique_id=537392068]
 layout_mode = 1
@@ -81,13 +88,13 @@ theme_override_fonts/font = ExtResource("6_f3o30")
 theme_override_font_sizes/font_size = 24
 text = "Rooms"
 
-[node name="EditRoom" type="Button" parent="InactivePages/HomePage/Margin/Rooms/Contents/Header" unique_id=126939736]
+[node name="EditRooms" type="Button" parent="InactivePages/HomePage/Margin/Rooms/Contents/Header" unique_id=126939736]
 custom_minimum_size = Vector2(31, 31)
 layout_mode = 2
 size_flags_horizontal = 10
 theme_type_variation = &"GrayButton"
 
-[node name="TextureRect" type="TextureRect" parent="InactivePages/HomePage/Margin/Rooms/Contents/Header/EditRoom" unique_id=1815340406]
+[node name="TextureRect" type="TextureRect" parent="InactivePages/HomePage/Margin/Rooms/Contents/Header/EditRooms" unique_id=1815340406]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 1
 anchors_preset = 8
@@ -136,13 +143,14 @@ scroll_hint_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/separation = 8
 
-[node name="Room" type="Panel" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List" unique_id=1323761510]
+[node name="Room" type="Button" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List" unique_id=1686293442]
 visible = false
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-theme_type_variation = &"SubPanel"
+theme_type_variation = &"GrayButton"
 
 [node name="Margin" type="MarginContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room" unique_id=1995399330]
 layout_mode = 1
@@ -151,15 +159,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Contents" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin" unique_id=1851378103]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 12
 
 [node name="Icon" type="Panel" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin/Contents" unique_id=598631962]
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Texture" type="TextureRect" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin/Contents/Icon" unique_id=1803837693]
 custom_minimum_size = Vector2(24, 24)
@@ -175,12 +186,14 @@ offset_right = 15.5
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("6_jpn0h")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Info" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin/Contents" unique_id=1081552262]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 8
 
 [node name="Name" type="Label" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin/Contents/Info" unique_id=1534996713]
@@ -190,10 +203,12 @@ text = "12 Ryzen ICT A"
 
 [node name="Students" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin/Contents/Info" unique_id=648727311]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin/Contents/Info/Students" unique_id=639841365]
 custom_minimum_size = Vector2(15, 15)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("7_jpn0h")
 expand_mode = 1
 
@@ -203,7 +218,12 @@ theme_override_fonts/font = ExtResource("8_mbg3t")
 theme_override_font_sizes/font_size = 11
 text = "11 Students"
 
-[node name="Open" type="Button" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin/Contents" unique_id=389231022]
+[node name="Actions" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin/Contents" unique_id=2146562479]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Open" type="Button" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin/Contents/Actions" unique_id=389231022]
 custom_minimum_size = Vector2(75, 35)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -212,6 +232,64 @@ theme_type_variation = &"BlackButton"
 theme_override_fonts/font = ExtResource("6_f3o30")
 theme_override_font_sizes/font_size = 11
 text = "OPEN"
+
+[node name="CheckBox" type="CheckBox" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room/Margin/Contents/Actions" unique_id=211527727]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_icons/checked = ExtResource("12_83q5b")
+theme_override_icons/unchecked = ExtResource("13_67fnb")
+theme_override_icons/checked_disabled = ExtResource("12_83q5b")
+theme_override_icons/unchecked_disabled = ExtResource("13_67fnb")
+disabled = true
+
+[node name="RoomEditActions" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Rooms" unique_id=2004631641]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="Cancel" type="Button" parent="InactivePages/HomePage/Margin/Rooms/RoomEditActions" unique_id=1622422123]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.4
+theme_type_variation = &"BlackButton"
+text = "Cancel"
+
+[node name="Delete" type="Button" parent="InactivePages/HomePage/Margin/Rooms/RoomEditActions" unique_id=1908355988]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GrayButton"
+
+[node name="Contents" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/RoomEditActions/Delete" unique_id=1670397979]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="InactivePages/HomePage/Margin/Rooms/RoomEditActions/Delete/Contents" unique_id=707086601]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("12_q22wi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="InactivePages/HomePage/Margin/Rooms/RoomEditActions/Delete/Contents" unique_id=1113221169]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_f3o30")
+text = "Delete"
 
 [node name="RoomPage" type="CanvasLayer" parent="InactivePages" unique_id=2134657536 node_paths=PackedStringArray("masterlist_handler", "today_attendance", "room_info")]
 visible = false
