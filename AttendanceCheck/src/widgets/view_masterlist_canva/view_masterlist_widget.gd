@@ -7,6 +7,7 @@ extends WidgetCanva
 var masterlist : Dictionary
 
 func InitWidget(passed_data : Dictionary) -> void:
+	super(passed_data)
 	masterlist = passed_data["masterlist"]
 	UpdateDisplayedAttendance()
 

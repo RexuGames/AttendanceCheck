@@ -6,14 +6,18 @@ extends Node
 @export var student_panel: Panel
 @export var list: VBoxContainer
 @export var edit: TextureButton
+@export var view: Button
 
 
 var masterlist : Dictionary[String, String]
 
 func _enter_tree() -> void:
 	Utils.SafeConnect(edit.pressed, _on_edit_pressed)
+	Utils.SafeConnect(view.pressed, _on_view_pressed)
 
 #region Listeners
+func _on_view_pressed() -> void:
+	Widgets.CreateViewMasterlist(masterlist)
 func _on_edit_pressed() -> void:
 	Widgets.CreateEditMasterlist(masterlist, 
 		func(new_masterlist : Dictionary):

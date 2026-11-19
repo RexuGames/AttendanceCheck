@@ -13,6 +13,7 @@ bg_color = Color(0, 0, 0, 0.32156864)
 script = ExtResource("1_nhyt7")
 list = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List")
 student_panel = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List/StudentPanel")
+destroy_on_popped = true
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
 
 [node name="Close" type="Button" parent="." unique_id=1455171228]
@@ -61,6 +62,7 @@ text = "View Masterlist"
 [node name="Close" type="TextureButton" parent="MarginContainer/Panel/MarginContainer/Contents/Header" unique_id=1075974325]
 layout_mode = 2
 texture_normal = ExtResource("5_8445y")
+script = ExtResource("2_2rxma")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1481123551]
 layout_mode = 2
@@ -73,6 +75,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 8
 
 [node name="StudentPanel" type="Panel" parent="MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List" unique_id=1187816156]
+visible = false
 custom_minimum_size = Vector2(0, 26)
 layout_mode = 2
 theme_type_variation = &"SubPanel"

@@ -1,6 +1,13 @@
 extends Node
 
 #region Global
+func CreateViewMasterlist(
+	masterlist : Dictionary[String,String]) -> void:
+	_CreateWidget(
+		{
+			"masterlist": masterlist,
+		}, 
+		load("uid://bp6dssvt4jxgl"))
 func CreateEditAttendance(
 	attendance_record : Dictionary[String, bool], 
 	masterlist : Dictionary[String,String], 

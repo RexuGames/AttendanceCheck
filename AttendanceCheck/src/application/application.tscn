@@ -28,11 +28,12 @@ masterlist_handler = NodePath("Masterlist")
 today_attendance = NodePath("TodayAttendance")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
-[node name="Masterlist" type="Node" parent="InactivePages/RoomPage" unique_id=1742367260 node_paths=PackedStringArray("student_panel", "list", "edit")]
+[node name="Masterlist" type="Node" parent="InactivePages/RoomPage" unique_id=1742367260 node_paths=PackedStringArray("student_panel", "list", "edit", "view")]
 script = ExtResource("4_g0tt8")
 student_panel = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List/StudentPanel")
 list = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/List")
 edit = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/Header/Edit")
+view = NodePath("../Margin/Contents/Datas/Contents/Masterlist/Margin/Contents/View")
 
 [node name="TodayAttendance" type="Node" parent="InactivePages/RoomPage" unique_id=643804179 node_paths=PackedStringArray("list", "student_panel", "attendance_container", "no_record_container", "record_attendance", "view_attendance", "total_label")]
 script = ExtResource("5_y01ik")
@@ -157,7 +158,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Austine Alagdon"
 
-[node name="Button" type="Button" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents" unique_id=1244212589]
+[node name="View" type="Button" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist/Margin/Contents" unique_id=1244212589]
 layout_mode = 2
 theme_type_variation = &"BlackButton"
 text = "View More"
