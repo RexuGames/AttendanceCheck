@@ -27,9 +27,18 @@ func _enter_tree() -> void:
 	Utils.SafeConnect(edit_delete.pressed, _on_editdelete_pressed)
 #region Listeners
 func _on_editdelete_pressed() -> void:
-	RemoveSelectedRooms()
-	ToggleEditMode(false)
-	Log.prn(Userdata.resource.rooms)
+	var selected_rooms : Array[RoomResource] = _GetSelectedRooms()
+	if (selected_rooms.is_empty()): 
+		ToastCreator.show_toast("Please select a room!")
+		return
+	
+	Widgets.CreateConfirmation("Deleting %d rooms." % _GetSelectedRooms().size(), 
+		func(_d):
+			RemoveRooms(selected_rooms)
+			ToggleEditMode(false)
+			Log.prn(Userdata.resource.rooms)
+			)
+	
 func _on_editcancel_pressed() -> void:
 	ToggleEditMode(false)
 func _on_editrooms_pressed() -> void:
@@ -73,8 +82,8 @@ func ToggleEditMode(toggle_mode : bool) -> void:
 func ToggleSelectRoom(room : RoomResource) -> void:
 	var checkbox : CheckBox = _FindRoomButton(room).get_node("Margin/Contents/Actions/CheckBox")
 	checkbox.button_pressed = false if checkbox.button_pressed else true
-func RemoveSelectedRooms() -> void:
-	for selected_room : RoomResource in _GetSelectedRooms():
+func RemoveRooms(target_rooms : Array[RoomResource]) -> void:
+	for selected_room : RoomResource in target_rooms:
 		rooms.erase(selected_room)
 	EventBus.rooms_updated.emit(rooms)
 #endregion

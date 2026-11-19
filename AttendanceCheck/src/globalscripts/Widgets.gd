@@ -1,6 +1,13 @@
 extends Node
 
 #region Global
+func CreateConfirmation(info : String, _on_confirmed : Callable) -> void:
+	_CreateWidget(
+		{
+			"info" : info,
+		},
+		load("uid://5skc7lyoi34d"),
+		_on_confirmed)
 func CreateEditRoom(room : RoomResource, is_adding : bool, _on_confirmed : Callable) -> void:
 	_CreateWidget(
 		{
