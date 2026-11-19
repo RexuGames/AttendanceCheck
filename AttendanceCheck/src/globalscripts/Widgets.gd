@@ -1,6 +1,14 @@
 extends Node
 
 #region Global
+func CreateEditRoom(name : String, is_adding : bool, _on_confirmed : Callable) -> void:
+	_CreateWidget(
+		{
+			"name" : name,
+			"is_adding": is_adding
+		},
+		load("uid://b362hslfe2hxd"),
+		_on_confirmed)
 func CreateViewMasterlist(
 	masterlist : Dictionary[String,String]) -> void:
 	_CreateWidget(

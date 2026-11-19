@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b362hslfe2hxd"]
 
-[ext_resource type="Script" uid="uid://c6ee0o55k5jcn" path="res://src/widgets/WidgetCanva.gd" id="1_jfyvm"]
+[ext_resource type="Script" uid="uid://wks36d5f86lk" path="res://src/widgets/edit_room_canva/edit_room_widget.gd" id="1_gfeqw"]
 [ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="2_stbvk"]
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="3_gfeqw"]
 [ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="4_0m8fo"]
@@ -9,8 +9,12 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rii1c"]
 bg_color = Color(0, 0, 0, 0.32156864)
 
-[node name="EditRoomWidget" type="CanvasLayer" unique_id=1604897645]
-script = ExtResource("1_jfyvm")
+[node name="EditRoomWidget" type="CanvasLayer" unique_id=1604897645 node_paths=PackedStringArray("done", "title", "name_edit")]
+script = ExtResource("1_gfeqw")
+done = NodePath("MarginContainer/Panel/MarginContainer/Contents/Options/Done")
+title = NodePath("MarginContainer/Panel/MarginContainer/Contents/Header/Title")
+name_edit = NodePath("MarginContainer/Panel/MarginContainer/Contents/Edit/NameEdit")
+destroy_on_popped = true
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
 
 [node name="Close" type="Button" parent="." unique_id=1337173339]
@@ -81,4 +85,4 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BlackButton"
-text = "Create"
+text = "Done"
