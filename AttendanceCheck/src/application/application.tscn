@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://cgp1ya63jd6ho" path="res://assets/ui/room_icons/cases.svg" id="6_jpn0h"]
 [ext_resource type="Texture2D" uid="uid://cb6pigq4dkn4p" path="res://assets/ui/school.svg" id="7_jpn0h"]
 [ext_resource type="FontFile" uid="uid://bhh7plawvyj1e" path="res://assets/fonts/Inter-Medium.ttf" id="8_mbg3t"]
+[ext_resource type="Script" uid="uid://dbp103531b7n2" path="res://src/application/room_page/room_info.gd" id="12_jdbx5"]
+[ext_resource type="Texture2D" uid="uid://b6l4qq7e2goot" path="res://assets/ui/close.svg" id="14_fpovm"]
+[ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="15_m83oe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh16w"]
 bg_color = Color(1, 1, 1, 1)
@@ -103,6 +106,7 @@ expand_mode = 1
 [node name="Body" type="ScrollContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents" unique_id=1854590873]
 layout_mode = 2
 size_flags_vertical = 3
+scroll_hint_mode = 1
 
 [node name="List" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body" unique_id=1698830362]
 layout_mode = 2
@@ -185,12 +189,17 @@ theme_override_fonts/font = ExtResource("6_f3o30")
 theme_override_font_sizes/font_size = 11
 text = "OPEN"
 
-[node name="RoomPage" type="CanvasLayer" parent="InactivePages" unique_id=2134657536 node_paths=PackedStringArray("masterlist_handler", "today_attendance")]
-visible = false
+[node name="RoomPage" type="CanvasLayer" parent="InactivePages" unique_id=2134657536 node_paths=PackedStringArray("masterlist_handler", "today_attendance", "room_info")]
 script = ExtResource("3_g0tt8")
 masterlist_handler = NodePath("Masterlist")
 today_attendance = NodePath("TodayAttendance")
+room_info = NodePath("RoomInfo")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
+
+[node name="RoomInfo" type="Node" parent="InactivePages/RoomPage" unique_id=122865609 node_paths=PackedStringArray("name_label", "students")]
+script = ExtResource("12_jdbx5")
+name_label = NodePath("../Margin/Contents/Info/Info/Name")
+students = NodePath("../Margin/Contents/Info/Info/Students/Students")
 
 [node name="Masterlist" type="Node" parent="InactivePages/RoomPage" unique_id=1742367260 node_paths=PackedStringArray("student_panel", "list", "edit", "view")]
 script = ExtResource("4_g0tt8")
@@ -229,16 +238,105 @@ theme = ExtResource("4_7nc0p")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/RoomPage/Margin" unique_id=1614160538]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Header" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents" unique_id=1275692573]
 layout_mode = 2
 
+[node name="Label" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Header" unique_id=1100019624]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_f3o30")
+theme_override_font_sizes/font_size = 24
+text = "Room View"
+
+[node name="Close" type="TextureButton" parent="InactivePages/RoomPage/Margin/Contents/Header" unique_id=161537174]
+layout_mode = 2
+size_flags_horizontal = 10
+texture_normal = ExtResource("14_fpovm")
+stretch_mode = 5
+script = ExtResource("15_m83oe")
+
 [node name="Info" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents" unique_id=1150917031]
 layout_mode = 2
+
+[node name="Icon" type="Panel" parent="InactivePages/RoomPage/Margin/Contents/Info" unique_id=659708062]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Texture" type="TextureRect" parent="InactivePages/RoomPage/Margin/Contents/Info/Icon" unique_id=713352122]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = -15.5
+offset_right = 15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_jpn0h")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Info" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Info" unique_id=1623296525]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Name" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Info/Info" unique_id=1090359487]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_f3o30")
+text = "12 Ryzen ICT A"
+
+[node name="Students" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Info/Info" unique_id=39817612]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="InactivePages/RoomPage/Margin/Contents/Info/Info/Students" unique_id=964450742]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture = ExtResource("7_jpn0h")
+expand_mode = 1
+
+[node name="Students" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Info/Info/Students" unique_id=2066442328]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_mbg3t")
+theme_override_font_sizes/font_size = 11
+text = "11 Students"
+
+[node name="Open" type="Button" parent="InactivePages/RoomPage/Margin/Contents/Info" unique_id=672363896]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme_type_variation = &"GrayButton"
+theme_override_fonts/font = ExtResource("6_f3o30")
+theme_override_font_sizes/font_size = 11
+
+[node name="Edit" type="TextureRect" parent="InactivePages/RoomPage/Margin/Contents/Info/Open" unique_id=1039310650]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_i6mit")
+stretch_mode = 5
 
 [node name="Datas" type="ScrollContainer" parent="InactivePages/RoomPage/Margin/Contents" unique_id=642862308]
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+scroll_hint_mode = 1
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas" unique_id=668781185]
 layout_mode = 2
@@ -249,6 +347,7 @@ theme_override_constants/separation = 16
 [node name="Masterlist" type="Panel" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents" unique_id=502686149]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Margin" type="MarginContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Masterlist" unique_id=447752005]
 layout_mode = 1
@@ -330,6 +429,7 @@ text = "View More"
 [node name="TodayAttendance" type="Panel" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents" unique_id=1481500026]
 custom_minimum_size = Vector2(0, 216)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Margin" type="MarginContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/TodayAttendance" unique_id=957177215]
 layout_mode = 1

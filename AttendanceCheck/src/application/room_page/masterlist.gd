@@ -34,7 +34,8 @@ func Init(masterlist : Dictionary[String, String]) -> void:
 
 #region Local
 func UpdateMasterlistData(new_masterlist : Dictionary[String,String]) -> void:
-	masterlist = new_masterlist
+	masterlist.clear()
+	masterlist.merge(new_masterlist)
 	EventBus.masterlist_updated.emit(masterlist)
 	
 ## Updates displayed masterlist students 
