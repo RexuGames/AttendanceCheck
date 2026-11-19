@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://bjn3us7yri827" path="res://src/widgets/edit_attendance_canva/attendance_info.gd" id="2_xfys7"]
 [ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="3_8h6em"]
 [ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="4_8h6em"]
+[ext_resource type="Texture2D" uid="uid://dkcaar5ok2xhk" path="res://assets/ui/toggled_on.svg" id="5_as8q6"]
+[ext_resource type="Texture2D" uid="uid://bb6dibqckytpn" path="res://assets/ui/toggled_off.svg" id="6_ben7j"]
 
 [node name="EditAttendanceWidget" type="CanvasLayer" unique_id=1457072405 node_paths=PackedStringArray("attendance_info", "list", "student_panel", "done", "date")]
 script = ExtResource("1_274ss")
@@ -104,7 +106,7 @@ theme_override_constants/separation = 8
 
 [node name="StudentPanel" type="Panel" parent="Panel/MarginContainer/Contents/Attendance/MarginContainer/Contents/ScrollContainer/List" unique_id=814110389]
 visible = false
-custom_minimum_size = Vector2(0, 25)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_type_variation = &"SubPanel"
 
@@ -133,7 +135,10 @@ theme_override_font_sizes/font_size = 14
 text = "Austine Alagdon"
 
 [node name="CheckBox" type="CheckBox" parent="Panel/MarginContainer/Contents/Attendance/MarginContainer/Contents/ScrollContainer/List/StudentPanel/Margin/Contents" unique_id=401375484]
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+theme_override_icons/checked = ExtResource("5_as8q6")
+theme_override_icons/unchecked = ExtResource("6_ben7j")
 
 [node name="Options" type="VBoxContainer" parent="Panel/MarginContainer/Contents" unique_id=41543511]
 layout_mode = 2
