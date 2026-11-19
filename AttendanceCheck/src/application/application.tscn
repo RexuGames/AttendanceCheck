@@ -150,6 +150,7 @@ theme_override_constants/separation = 8
 visible = false
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
+mouse_filter = 1
 theme_type_variation = &"GrayButton"
 
 [node name="Margin" type="MarginContainer" parent="InactivePages/HomePage/Margin/Rooms/Contents/Body/List/Room" unique_id=1995399330]
