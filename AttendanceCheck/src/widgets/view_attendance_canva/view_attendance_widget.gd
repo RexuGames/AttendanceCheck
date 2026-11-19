@@ -4,6 +4,8 @@ extends WidgetCanva
 @export var list: VBoxContainer
 @export var student_panel: Panel
 @export var edit: Button
+@export var present: Label
+@export var absent: Label
 
 
 var date : Dictionary
@@ -21,12 +23,14 @@ func InitWidget(passed_data : Dictionary) -> void:
 	masterlist = passed_data["masterlist"]
 	date = passed_data["date"]
 	UpdateDisplayedAttendance()
+	UpdateTotalPresentAbsent()
 
 #region Listeners
 func _on_attendance_updated(new_record : Dictionary, date : Dictionary):
 	if (not self.date == date): return
 	attendance_record = new_record
 	UpdateDisplayedAttendance()
+	UpdateTotalPresentAbsent()
 	
 func _on_edit_pressed() -> void:
 	Widgets.CreateEditAttendance(attendance_record, masterlist, "", date, 
@@ -36,6 +40,16 @@ func _on_edit_pressed() -> void:
 	pass
 #endregion
 #region Local
+func UpdateTotalPresentAbsent() -> void:
+	var total_absent : int = 0
+	var total_present : int = 0
+	for is_present : bool in attendance_record.values():
+		if (is_present):
+			total_present += 1
+		else:
+			total_absent += 1
+	present.text = "%d Present" % total_present
+	absent.text = "%d Absent" % total_absent
 # Updates the original reference
 func UpdateAttendanceData(new_record : Dictionary) -> void:
 	attendance_record.clear()

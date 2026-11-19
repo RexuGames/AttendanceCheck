@@ -9,11 +9,13 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ok5lb"]
 bg_color = Color(0, 0, 0, 0.32156864)
 
-[node name="ViewAttendanceWidget" type="CanvasLayer" unique_id=844334420 node_paths=PackedStringArray("list", "student_panel", "edit")]
+[node name="ViewAttendanceWidget" type="CanvasLayer" unique_id=844334420 node_paths=PackedStringArray("list", "student_panel", "edit", "present", "absent")]
 script = ExtResource("1_3eonr")
 list = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List")
 student_panel = NodePath("MarginContainer/Panel/MarginContainer/Contents/ScrollContainer/List/StudentPanel")
 edit = NodePath("MarginContainer/Panel/MarginContainer/Contents/Options/Edit")
+present = NodePath("MarginContainer/Panel/MarginContainer/Contents/Info/Present")
+absent = NodePath("MarginContainer/Panel/MarginContainer/Contents/Info/Absent")
 destroy_on_popped = true
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
 
