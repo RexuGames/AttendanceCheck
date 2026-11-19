@@ -3,6 +3,7 @@ extends Node
 
 
 #region Data
+@warning_ignore("unused_signal") signal room_edited(room : RoomResource)
 @warning_ignore("unused_signal") signal rooms_updated(rooms : Array[RoomResource])
 @warning_ignore("unused_signal") signal userdata_loaded(resource : UserdataResource)
 @warning_ignore("unused_signal") signal attendance_updated(new_record : Dictionary, date : Dictionary)

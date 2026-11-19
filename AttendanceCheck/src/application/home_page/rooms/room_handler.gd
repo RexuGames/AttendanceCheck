@@ -9,10 +9,14 @@ extends Node
 
 var rooms : Array[RoomResource]
 func _enter_tree() -> void:
+	Utils.SafeConnect(EventBus.room_edited, _on_room_edited)
 	Utils.SafeConnect(EventBus.rooms_updated, _on_rooms_updated)
 	Utils.SafeConnect(EventBus.userdata_loaded, _on_userdata_loaded)
 	Utils.SafeConnect(create_room.pressed, _on_createroom_pressed)
 #region Listeners
+func _on_room_edited(room : RoomResource) -> void:
+	UpdateDisplayedRooms()
+	pass
 func _on_room_open(room : RoomResource) -> void:
 	EventBus.page_push_request.emit(room_page, {"room" : room})
 	pass

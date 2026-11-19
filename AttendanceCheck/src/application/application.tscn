@@ -196,10 +196,11 @@ today_attendance = NodePath("TodayAttendance")
 room_info = NodePath("RoomInfo")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
-[node name="RoomInfo" type="Node" parent="InactivePages/RoomPage" unique_id=122865609 node_paths=PackedStringArray("name_label", "students")]
+[node name="RoomInfo" type="Node" parent="InactivePages/RoomPage" unique_id=122865609 node_paths=PackedStringArray("name_label", "students", "edit")]
 script = ExtResource("12_jdbx5")
 name_label = NodePath("../Margin/Contents/Info/Info/Name")
 students = NodePath("../Margin/Contents/Info/Info/Students/Students")
+edit = NodePath("../Margin/Contents/Info/Edit")
 
 [node name="Masterlist" type="Node" parent="InactivePages/RoomPage" unique_id=1742367260 node_paths=PackedStringArray("student_panel", "list", "edit", "view")]
 script = ExtResource("4_g0tt8")
@@ -306,7 +307,7 @@ theme_override_fonts/font = ExtResource("8_mbg3t")
 theme_override_font_sizes/font_size = 11
 text = "11 Students"
 
-[node name="Open" type="Button" parent="InactivePages/RoomPage/Margin/Contents/Info" unique_id=672363896]
+[node name="Edit" type="Button" parent="InactivePages/RoomPage/Margin/Contents/Info" unique_id=672363896]
 custom_minimum_size = Vector2(34, 34)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -315,7 +316,7 @@ theme_type_variation = &"GrayButton"
 theme_override_fonts/font = ExtResource("6_f3o30")
 theme_override_font_sizes/font_size = 11
 
-[node name="Edit" type="TextureRect" parent="InactivePages/RoomPage/Margin/Contents/Info/Open" unique_id=1039310650]
+[node name="Edit" type="TextureRect" parent="InactivePages/RoomPage/Margin/Contents/Info/Edit" unique_id=1039310650]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
