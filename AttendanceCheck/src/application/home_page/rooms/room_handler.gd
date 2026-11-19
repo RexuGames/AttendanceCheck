@@ -38,7 +38,6 @@ func _on_editdelete_pressed() -> void:
 			ToggleEditMode(false)
 			Log.prn(Userdata.resource.rooms)
 			)
-	
 func _on_editcancel_pressed() -> void:
 	ToggleEditMode(false)
 func _on_editrooms_pressed() -> void:
