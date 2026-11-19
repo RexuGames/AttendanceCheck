@@ -6,7 +6,7 @@ extends PageCanva
 
 
 func _page_activated(passed_data : Dictionary) -> void:
-	var room : RoomResource = RoomResource.new()
+	var room : RoomResource = passed_data["room"]
 	InitHandlers(room)
 #region Local
 func InitHandlers(room : RoomResource) -> void:

@@ -5,6 +5,7 @@ extends Node
 @export var room_panel: Panel
 @export var list: VBoxContainer
 @export var create_room: Button
+@export var room_page: PageCanva
 
 var rooms : Array[RoomResource]
 func _enter_tree() -> void:
@@ -12,6 +13,9 @@ func _enter_tree() -> void:
 	Utils.SafeConnect(EventBus.userdata_loaded, _on_userdata_loaded)
 	Utils.SafeConnect(create_room.pressed, _on_createroom_pressed)
 #region Listeners
+func _on_room_open(room : RoomResource) -> void:
+	EventBus.page_push_request.emit(room_page, {"room" : room})
+	pass
 func _on_rooms_updated(rooms : Array[RoomResource]) -> void:
 	self.rooms = rooms
 	UpdateDisplayedRooms()
@@ -39,7 +43,8 @@ func _AddRoomPanel(room : RoomResource) -> void:
 	var new_room_panel : Panel = room_panel.duplicate()
 	var name_label : Label = new_room_panel.get_node("Margin/Contents/Info/Name")
 	var students_label : Label = new_room_panel.get_node("Margin/Contents/Info/Students/Students")
-	
+	var open_button : BaseButton = new_room_panel.get_node("Margin/Contents/Open")
+	Utils.SafeConnect(open_button.pressed, _on_room_open.bind(room))
 	name_label.text = room.name
 	students_label.text = str(room.masterlist.size())
 	new_room_panel.visible = true

@@ -9,7 +9,8 @@ extends Node
 @warning_ignore("unused_signal") signal masterlist_updated(new_masterlist : Dictionary)
 #endregion
 
-#region Pages
+#endregion
+#region Page System
 ## Emitted when page is pushed in Page Stack
 @warning_ignore("unused_signal") signal page_pushed(page : PageCanva, passed_data : Dictionary)  
 ## Emitted when page popped from Page Stack.

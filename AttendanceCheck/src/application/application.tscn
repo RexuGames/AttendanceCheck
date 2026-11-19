@@ -52,11 +52,12 @@ theme = ExtResource("4_7nc0p")
 [node name="Rooms" type="Control" parent="InactivePages/HomePage/Margin" unique_id=141425210]
 layout_mode = 2
 
-[node name="RoomHandler" type="Node" parent="InactivePages/HomePage/Margin/Rooms" unique_id=1773812971 node_paths=PackedStringArray("room_panel", "list", "create_room")]
+[node name="RoomHandler" type="Node" parent="InactivePages/HomePage/Margin/Rooms" unique_id=1773812971 node_paths=PackedStringArray("room_panel", "list", "create_room", "room_page")]
 script = ExtResource("5_rdayr")
 room_panel = NodePath("../Contents/Body/List/Room")
 list = NodePath("../Contents/Body/List")
 create_room = NodePath("../Contents/Header/CreateRoom")
+room_page = NodePath("../../../../RoomPage")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Rooms" unique_id=537392068]
 layout_mode = 1
