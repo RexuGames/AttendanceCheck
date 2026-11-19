@@ -45,12 +45,14 @@ view_attendance = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Ma
 total_label = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Header/Total")
 
 [node name="Background" type="Panel" parent="InactivePages/RoomPage" unique_id=1633302386]
-offset_right = 360.0
-offset_bottom = 640.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_dh16w")
-metadata/_edit_use_anchors_ = true
 
 [node name="Margin" type="MarginContainer" parent="InactivePages/RoomPage" unique_id=896832211]
 anchors_preset = 15

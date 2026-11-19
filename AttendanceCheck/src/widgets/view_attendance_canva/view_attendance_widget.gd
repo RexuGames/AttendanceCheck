@@ -25,6 +25,7 @@ func InitWidget(passed_data : Dictionary) -> void:
 #region Listeners
 func _on_attendance_updated(new_record : Dictionary, date : Dictionary):
 	if (not self.date == date): return
+	attendance_record = new_record
 	UpdateDisplayedAttendance()
 	
 func _on_edit_pressed() -> void:
