@@ -25,15 +25,6 @@ corner_radius_top_right = 9
 corner_radius_bottom_right = 9
 corner_radius_bottom_left = 9
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5k3m"]
-content_margin_top = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.9137255, 0.9137255, 0.9137255, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nc0p"]
 bg_color = Color(0.96913654, 0.96913713, 0.96913666, 1)
 corner_radius_top_left = 15
@@ -70,8 +61,8 @@ Label/font_sizes/font_size = 17
 Label/fonts/font = ExtResource("1_w2816")
 LineEdit/colors/font_color = Color(0, 0, 0, 1)
 LineEdit/colors/font_placeholder_color = Color(0.7490196, 0.7490196, 0.7490196, 1)
-LineEdit/styles/focus = SubResource("StyleBoxFlat_d5k3m")
-LineEdit/styles/normal = SubResource("StyleBoxFlat_d5k3m")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_7nc0p")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_7nc0p")
 MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 15
 MarginContainer/constants/margin_right = 15

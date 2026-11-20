@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://4a4vf3qu5ela" path="res://assets/ui/person.svg" id="26_xb6vf"]
 [ext_resource type="Script" uid="uid://di63id080joh" path="res://src/application/account_page/signup.gd" id="27_uou5b"]
 [ext_resource type="Texture2D" uid="uid://lnejpvnjodyf" path="res://assets/ui/lock.svg" id="27_wopua"]
+[ext_resource type="Texture2D" uid="uid://c4g4s1s0jr6en" path="res://assets/ui/visibility.svg" id="30_0afjm"]
+[ext_resource type="Texture2D" uid="uid://cl2jm74agym83" path="res://assets/ui/visibility_off.svg" id="31_tddxi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh16w"]
 bg_color = Color(1, 1, 1, 1)
@@ -816,14 +818,11 @@ text = "Record Attendance"
 script = ExtResource("3_ouc2j")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
-[node name="Signup" type="Node" parent="InactivePages/AccountPage" unique_id=1087841099 node_paths=PackedStringArray("email_edit", "password_edit", "confirm_password_edit", "sign_up_button", "login_button", "login_control", "signup_control", "hint_label")]
+[node name="Signup" type="Node" parent="InactivePages/AccountPage" unique_id=1087841099 node_paths=PackedStringArray("sign_up_button", "login_button", "login_control", "signup_control", "hint_label")]
 script = ExtResource("27_uou5b")
-email_edit = NodePath("../Margin/Signup/Contents/Inputs/Email/EmailEdit")
-password_edit = NodePath("../Margin/Signup/Contents/Inputs/Password/PasswordEdit")
-confirm_password_edit = NodePath("../Margin/Signup/Contents/Inputs/Confirm/ConfirmPasswordEdit")
 sign_up_button = NodePath("../Margin/Signup/Contents/Confirm/SignUp")
 login_button = NodePath("../Margin/Signup/Contents/Option/Login")
-login_control = NodePath("../Margin/Login")
+login_control = NodePath("")
 signup_control = NodePath("../Margin/Signup")
 hint_label = NodePath("../Margin/Signup/Contents/Confirm/Hint")
 
@@ -837,6 +836,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_dh16w")
 
+[node name="Close" type="TextureButton" parent="InactivePages/AccountPage" unique_id=864013506]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 44.0
+offset_bottom = 42.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_normal = ExtResource("14_fpovm")
+script = ExtResource("15_m83oe")
+
 [node name="Margin" type="MarginContainer" parent="InactivePages/AccountPage" unique_id=531472125]
 anchors_preset = 15
 anchor_right = 1.0
@@ -844,123 +853,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_7nc0p")
-
-[node name="Login" type="Control" parent="InactivePages/AccountPage/Margin" unique_id=1258313062]
-visible = false
-layout_mode = 2
-theme = ExtResource("4_7nc0p")
-
-[node name="Contents" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Login" unique_id=1877274716]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -165.0
-offset_top = -305.0
-offset_right = 165.0
-offset_bottom = 305.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 27
-alignment = 1
-
-[node name="Info" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Login/Contents" unique_id=1244520956]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="InactivePages/AccountPage/Margin/Login/Contents/Info" unique_id=757761535]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("6_f3o30")
-theme_override_font_sizes/font_size = 24
-text = "LOGIN"
-horizontal_alignment = 1
-
-[node name="Info" type="Label" parent="InactivePages/AccountPage/Margin/Login/Contents/Info" unique_id=194159239]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("8_mbg3t")
-theme_override_font_sizes/font_size = 11
-text = "Lorem ipsum dolor sit amet, consectetur"
-horizontal_alignment = 1
-
-[node name="Inputs" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Login/Contents" unique_id=1014587321]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Email" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs" unique_id=2039871243]
-layout_mode = 2
-
-[node name="Info" type="HBoxContainer" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs/Email" unique_id=240096638]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs/Email/Info" unique_id=620263036]
-layout_mode = 2
-texture = ExtResource("26_xb6vf")
-
-[node name="Label" type="Label" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs/Email/Info" unique_id=893132288]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Email"
-
-[node name="EmailEdit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs/Email" unique_id=1769724411]
-layout_mode = 2
-placeholder_text = "Enter Email"
-alignment = 1
-
-[node name="Password" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs" unique_id=1731284079]
-layout_mode = 2
-
-[node name="Info" type="HBoxContainer" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs/Password" unique_id=1380193992]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs/Password/Info" unique_id=284558233]
-layout_mode = 2
-texture = ExtResource("27_wopua")
-
-[node name="Label" type="Label" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs/Password/Info" unique_id=2060389730]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Password"
-
-[node name="PasswordEdit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs/Password" unique_id=2106542369]
-layout_mode = 2
-placeholder_text = "Enter Password"
-alignment = 1
-
-[node name="Confirm" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Login/Contents" unique_id=1770874617]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Error" type="Label" parent="InactivePages/AccountPage/Margin/Login/Contents/Confirm" unique_id=284982352]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.8605053, 0.1276432, 0.11117678, 1)
-theme_override_fonts/font = ExtResource("8_mbg3t")
-theme_override_font_sizes/font_size = 14
-horizontal_alignment = 1
-
-[node name="Login" type="Button" parent="InactivePages/AccountPage/Margin/Login/Contents/Confirm" unique_id=1445743322]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-theme_type_variation = &"BlackButton"
-text = "Log In"
-
-[node name="Option" type="HBoxContainer" parent="InactivePages/AccountPage/Margin/Login/Contents" unique_id=2144179763]
-layout_mode = 2
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Label" type="Label" parent="InactivePages/AccountPage/Margin/Login/Contents/Option" unique_id=772118450]
-layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Don't have an account then"
-
-[node name="Signup" type="Button" parent="InactivePages/AccountPage/Margin/Login/Contents/Option" unique_id=1205685766]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_f3o30")
-theme_override_font_sizes/font_size = 14
-text = "Sign Up"
-flat = true
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
 
 [node name="Signup" type="Control" parent="InactivePages/AccountPage/Margin" unique_id=100883837]
 layout_mode = 2
@@ -968,22 +862,17 @@ theme = ExtResource("4_7nc0p")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Signup" unique_id=563475076]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -165.0
-offset_top = -305.0
-offset_right = 165.0
-offset_bottom = 305.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 27
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Info" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents" unique_id=830053525]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="Title" type="Label" parent="InactivePages/AccountPage/Margin/Signup/Contents/Info" unique_id=285213712]
 layout_mode = 2
@@ -1001,67 +890,95 @@ horizontal_alignment = 1
 
 [node name="Inputs" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents" unique_id=1834503711]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
 
-[node name="Email" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs" unique_id=1235790898]
+[node name="Email" type="Panel" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs" unique_id=205454820]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Info" type="HBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Email" unique_id=971730319]
-layout_mode = 2
+[node name="Margin" type="MarginContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Email" unique_id=1234953560]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Email/Info" unique_id=177339168]
+[node name="Contents" type="HBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Email/Margin" unique_id=278381338]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Email/Margin/Contents" unique_id=1668034271]
 layout_mode = 2
 texture = ExtResource("26_xb6vf")
+stretch_mode = 5
 
-[node name="Label" type="Label" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Email/Info" unique_id=1321509152]
+[node name="Edit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Email/Margin/Contents" unique_id=86852269]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Email"
-
-[node name="EmailEdit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Email" unique_id=460332392]
-layout_mode = 2
+size_flags_horizontal = 3
 placeholder_text = "Enter Email"
-alignment = 1
 
-[node name="Password" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs" unique_id=1688359402]
+[node name="Password" type="Panel" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs" unique_id=1197974183]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Info" type="HBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Password" unique_id=119568318]
-layout_mode = 2
+[node name="Margin" type="MarginContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Password" unique_id=1242146878]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Password/Info" unique_id=791113920]
+[node name="Contents" type="HBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Password/Margin" unique_id=756012348]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Password/Margin/Contents" unique_id=1198391447]
 layout_mode = 2
 texture = ExtResource("27_wopua")
+stretch_mode = 5
 
-[node name="Label" type="Label" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Password/Info" unique_id=486017772]
+[node name="Edit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Password/Margin/Contents" unique_id=1199980733]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Password"
-
-[node name="PasswordEdit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Password" unique_id=669250348]
-layout_mode = 2
+size_flags_horizontal = 3
 placeholder_text = "Enter Password"
-alignment = 1
 
-[node name="Confirm" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs" unique_id=79737104]
+[node name="Show" type="CheckButton" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Password/Margin/Contents" unique_id=1014546506]
+layout_mode = 2
+theme_override_icons/checked = ExtResource("30_0afjm")
+theme_override_icons/unchecked = ExtResource("31_tddxi")
+
+[node name="ConfirmPassword" type="Panel" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs" unique_id=809893094]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Info" type="HBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Confirm" unique_id=361143225]
-layout_mode = 2
+[node name="Margin" type="MarginContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/ConfirmPassword" unique_id=1785215729]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Confirm/Info" unique_id=254632771]
+[node name="Contents" type="HBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/ConfirmPassword/Margin" unique_id=1644639581]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/ConfirmPassword/Margin/Contents" unique_id=604190237]
 layout_mode = 2
 texture = ExtResource("27_wopua")
+stretch_mode = 5
 
-[node name="Label" type="Label" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Confirm/Info" unique_id=94791270]
+[node name="Edit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/ConfirmPassword/Margin/Contents" unique_id=1724584794]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
-text = "Confirm Password"
+size_flags_horizontal = 3
+placeholder_text = "Confirm Password"
 
-[node name="ConfirmPasswordEdit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Confirm" unique_id=1784717468]
+[node name="Show" type="CheckButton" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/ConfirmPassword/Margin/Contents" unique_id=503111147]
 layout_mode = 2
-placeholder_text = "Repeat Password"
-alignment = 1
+theme_override_icons/checked = ExtResource("30_0afjm")
+theme_override_icons/unchecked = ExtResource("31_tddxi")
 
 [node name="Confirm" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents" unique_id=196418231]
 layout_mode = 2
@@ -1097,12 +1014,5 @@ theme_override_fonts/font = ExtResource("6_f3o30")
 theme_override_font_sizes/font_size = 14
 text = "Login"
 flat = true
-
-[node name="Close" type="TextureButton" parent="InactivePages/AccountPage/Margin" unique_id=864013506]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture_normal = ExtResource("14_fpovm")
-script = ExtResource("15_m83oe")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1741969730]
