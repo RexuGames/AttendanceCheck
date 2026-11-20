@@ -816,6 +816,7 @@ theme_type_variation = &"BlackButton"
 text = "Record Attendance"
 
 [node name="AccountPage" type="CanvasLayer" parent="InactivePages" unique_id=971056791]
+visible = false
 script = ExtResource("3_ouc2j")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 

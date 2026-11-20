@@ -35,14 +35,14 @@ func _on_signup_pressed() -> void:
 	
 	if (not IsValidInputs(email,password,confirm)): return
 	sign_up_button.disabled = true
-	Supabase.RequestCreateAccount(email, password, 
-	func(data : Dictionary):
-		if (data.has("error")):
-			_ShowError(data["error"])
-		else:
-			_ShowSuccess("Account Created!")
-		sign_up_button.disabled = false
-		)
+	Supabase.RequestCreateAccount(email, password,
+		func(data : Dictionary):
+			if (data.has("error")):
+				_ShowError(data["error"])
+			else:
+				_ShowSuccess("Account Created!")
+			sign_up_button.disabled = false
+	)
 	pass
 func _on_login_pressed() -> void:
 	signup_control.visible = false
@@ -100,7 +100,7 @@ func IsValidInputs(email: String, password: String, confirm: String) -> bool:
 
 #region Utils
 func _ShowError(text : String) -> void:
-	Log.err(text)
+	Log.warn(text)
 	hint_label.text = text
 	hint_label.add_theme_color_override("font_color", ERROR_COLOR)
 	await get_tree().create_timer(2).timeout

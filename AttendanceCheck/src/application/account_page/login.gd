@@ -31,6 +31,9 @@ func _on_login_pressed() -> void:
 				_ShowError(data["error"])
 			else:
 				_ShowSuccess("Logged in!")
+				Log.pr(data["data"]["uuid"])
+				EventBus.logged_in.emit(data["data"]["uuid"])
+				EventBus.page_pop_front_request.emit()
 			login.disabled = false
 			)
 	pass
@@ -77,7 +80,7 @@ func IsValidInputs(email: String, password: String) -> bool:
 
 #region Utils
 func _ShowError(text : String) -> void:
-	Log.err(text)
+	Log.warn(text)
 	hint_label.text = text
 	hint_label.add_theme_color_override("font_color", ERROR_COLOR)
 	await get_tree().create_timer(2).timeout
