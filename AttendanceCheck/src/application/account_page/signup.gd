@@ -6,18 +6,27 @@ const OK_COLOR = Color.GREEN
 @export_group("References")
 @export var email_edit: LineEdit
 @export var password_edit: LineEdit
+@export var show_password: CheckButton
+@export var show_confirm_password: CheckButton
+
 @export var confirm_password_edit: LineEdit
 @export var sign_up_button: Button
 @export var login_button: Button
-@export var login_control: Control
 @export var signup_control: Control
 @export var hint_label: Label
 
 func _enter_tree() -> void:
+	Utils.SafeConnect(show_password.toggled, _on_show_password_toggled)
+	Utils.SafeConnect(show_confirm_password.toggled, _on_show_confirmpassword_toggled)
 	Utils.SafeConnect(login_button.pressed, _on_login_pressed)
 	Utils.SafeConnect(sign_up_button.pressed, _on_signup_pressed)
 
 #region Listeners
+func _on_show_password_toggled(toggled_on : bool) -> void:
+	password_edit.secret = !toggled_on 
+	Log.pr(password_edit.secret)
+func _on_show_confirmpassword_toggled(toggled_on : bool) -> void:
+	confirm_password_edit.secret = !toggled_on
 func _on_signup_pressed() -> void:
 	
 	var email : String = email_edit.text
@@ -36,7 +45,6 @@ func _on_signup_pressed() -> void:
 		)
 	pass
 func _on_login_pressed() -> void:
-	login_control.visible = true
 	signup_control.visible = false
 #endregion
 
