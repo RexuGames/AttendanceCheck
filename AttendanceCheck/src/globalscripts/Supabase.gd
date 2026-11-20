@@ -1,3 +1,4 @@
+@icon("res://addons/at-icons/node2d/database.svg")
 extends HTTPRequest
 
 const SUPABASE_ANON_KEY : String = "sb_publishable_UR2-_1LWpvc0oEZbWxqvCg_45E8Fmi_"
