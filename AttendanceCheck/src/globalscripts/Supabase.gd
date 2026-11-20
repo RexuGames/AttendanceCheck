@@ -21,8 +21,10 @@ func RequestCreateAccount(email : String, password : String, listener : Callable
 		"password" : password}
 	)
 	var err : Error = request(URL, HEADERS, HTTPClient.METHOD_POST, body)
-	if (err != OK):
-		Log.err("Something went wrong!")
+	if (err == OK):
+		set_meta("listener", listener)
+	else:
+		Log.pr("Something went wrong!")
 #endregion
 
 #region Listeners
