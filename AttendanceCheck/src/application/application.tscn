@@ -819,20 +819,29 @@ text = "Record Attendance"
 script = ExtResource("3_ouc2j")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
-[node name="Signup" type="Node" parent="InactivePages/AccountPage" unique_id=1087841099 node_paths=PackedStringArray("email_edit", "password_edit", "show_password", "show_confirm_password", "confirm_password_edit", "sign_up_button", "login_button", "signup_control", "hint_label")]
+[node name="Signup" type="Node" parent="InactivePages/AccountPage" unique_id=1087841099 node_paths=PackedStringArray("email_edit", "password_edit", "show_password", "show_confirm_password", "login_control", "confirm_password_edit", "sign_up_button", "login_button", "signup_control", "hint_label")]
 script = ExtResource("27_uou5b")
 email_edit = NodePath("../Margin/Signup/Contents/Inputs/Email/Margin/Contents/Edit")
 password_edit = NodePath("../Margin/Signup/Contents/Inputs/Password/Margin/Contents/Edit")
 show_password = NodePath("../Margin/Signup/Contents/Inputs/Password/Margin/Contents/Show")
 show_confirm_password = NodePath("../Margin/Signup/Contents/Inputs/ConfirmPassword/Margin/Contents/Show")
+login_control = NodePath("../Margin/Login")
 confirm_password_edit = NodePath("../Margin/Signup/Contents/Inputs/ConfirmPassword/Margin/Contents/Edit")
 sign_up_button = NodePath("../Margin/Signup/Contents/Confirm/SignUp")
 login_button = NodePath("../Margin/Signup/Contents/Option/Login")
 signup_control = NodePath("../Margin/Signup")
 hint_label = NodePath("../Margin/Signup/Contents/Confirm/Hint")
 
-[node name="Login" type="Node" parent="InactivePages/AccountPage" unique_id=1600916573]
+[node name="Login" type="Node" parent="InactivePages/AccountPage" unique_id=1600916573 node_paths=PackedStringArray("email_edit", "password_edit", "show_password", "login", "signup", "signup_control", "login_control", "hint_label")]
 script = ExtResource("28_tddxi")
+email_edit = NodePath("../Margin/Login/Contents/Inputs/Email/Margin/Contents/Edit")
+password_edit = NodePath("../Margin/Login/Contents/Inputs/Password/Margin/Contents/Edit")
+show_password = NodePath("../Margin/Login/Contents/Inputs/Password/Margin/Contents/Show")
+login = NodePath("../Margin/Login/Contents/Confirm/Login")
+signup = NodePath("../Margin/Login/Contents/Option/Signup")
+signup_control = NodePath("../Margin/Signup")
+login_control = NodePath("../Margin/Login")
+hint_label = NodePath("../Margin/Login/Contents/Confirm/Hint")
 
 [node name="Background" type="Panel" parent="InactivePages/AccountPage" unique_id=2096958353]
 anchors_preset = 15

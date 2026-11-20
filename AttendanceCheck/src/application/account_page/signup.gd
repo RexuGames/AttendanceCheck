@@ -1,14 +1,14 @@
 @icon("res://addons/at-icons/node/script.svg")
 extends Node
 
-const ERROR_COLOR = Color.RED
-const OK_COLOR = Color.GREEN
+@export var ERROR_COLOR = Color.RED
+@export var  OK_COLOR = Color.GREEN
 @export_group("References")
 @export var email_edit: LineEdit
 @export var password_edit: LineEdit
 @export var show_password: CheckButton
 @export var show_confirm_password: CheckButton
-
+@export var login_control: Control
 @export var confirm_password_edit: LineEdit
 @export var sign_up_button: Button
 @export var login_button: Button
@@ -46,6 +46,7 @@ func _on_signup_pressed() -> void:
 	pass
 func _on_login_pressed() -> void:
 	signup_control.visible = false
+	login_control.visible = true
 #endregion
 
 #region Local

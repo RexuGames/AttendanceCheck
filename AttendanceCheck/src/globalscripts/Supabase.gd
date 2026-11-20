@@ -8,27 +8,6 @@ const SUPABASE_URL : String = "https://oxkhlzgtqisloniivhcc.supabase.co"
 func _enter_tree() -> void:
 	Utils.SafeConnect(request_completed, _on_request_completed)
 
-#region Global
-func RequestCreateAccount(email : String, password : String, listener : Callable) -> void:
-	const PATH : String = "/functions/v1/create-account"
-	const URL : String = SUPABASE_URL + PATH
-	const HEADERS := [
-		"apikey: " + SUPABASE_ANON_KEY,
-		"Authorization: Bearer " + SUPABASE_ANON_KEY,  
-		"Content-Type: application/json" 
-	]
-	var body : String = JSON.stringify(
-		{"email" : email,
-		"password" : password}
-	)
-	var err : Error = request(URL, HEADERS, HTTPClient.METHOD_POST, body)
-	
-	if (err == OK):
-		set_meta("listener", listener)
-	else:
-		Log.pr("Something went wrong!")
-#endregion
-
 #region Listeners
 func _on_request_completed(result : int, response_code : int, headers : PackedStringArray, body : PackedByteArray) -> void:
 	var data : Dictionary
@@ -49,10 +28,42 @@ func _on_request_completed(result : int, response_code : int, headers : PackedSt
 	data = parsed
 	Log.pr(data)
 	CallListener(data)
+#endregion
 
+#region Global
+func RequestLoginAccount(email : String, password : String, listener : Callable) -> void:
+	_CreateRequest(
+		"login-account", 
+		{
+			"email" : email,
+			"password" : password
+		}, 
+		listener)
+func RequestCreateAccount(email : String, password : String, listener : Callable) -> void:
+	_CreateRequest(
+		"create-account", 
+		{
+			"email" : email,
+			"password" : password
+		}, 
+		listener)
 #endregion
 
 #region Utils
+func _CreateRequest(edge_name : String, data : Dictionary, listener : Callable) -> void:
+	var URL : String = SUPABASE_URL + "/functions/v1/" + edge_name
+	const HEADERS := [
+		"apikey: " + SUPABASE_ANON_KEY,
+		"Authorization: Bearer " + SUPABASE_ANON_KEY,  
+		"Content-Type: application/json" 
+	]
+	var body : String = JSON.stringify(data)
+	var err : Error = request(URL, HEADERS, HTTPClient.METHOD_POST, body)
+	
+	if (err == OK):
+		set_meta("listener", listener)
+	else:
+		Log.pr("Something went wrong!")
 func CallListener(body : Dictionary):
 	var listener : Callable = get_meta("listener", Callable())
 	if (listener.is_valid()):
