@@ -51,7 +51,6 @@ func Init(attendance_history : Dictionary[Dictionary,Dictionary], masterlist : D
 	self.attendance_history = attendance_history
 	self.attendance_today = _FindAttendanceInHistory(GetDateToday())
 	
-	Log.pr(attendance_today)
 	UpdateStateContainers()
 	UpdateDisplayedAttendance()
 	UpdateAttendanceCount()
@@ -83,8 +82,6 @@ func UpdateStateContainers() -> void:
 		UpdateDisplayedAttendance()
 ## Adds students that is not in today_attenance NOTE: Only if today_attendance is not empty!
 func UpdateAttendanceTodayStudents() -> void:
-	if (attendance_today.is_empty()): return
-	
 	## Remove student in attendance that is not in masterlist.
 	for student_id : String in attendance_today:
 		if (masterlist.has(student_id)): continue
