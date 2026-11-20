@@ -19,20 +19,20 @@ func _enter_tree() -> void:
 
 #region Listeners
 func _on_signup_pressed() -> void:
+	
 	var email : String = email_edit.text
 	var password : String = password_edit.text
 	var confirm : String = confirm_password_edit.text
 	
 	if (not IsValidInputs(email,password,confirm)): return
-	
+	sign_up_button.disabled = true
 	Supabase.RequestCreateAccount(email, password, 
 	func(data : Dictionary):
 		if (data.has("error")):
 			_ShowError(data["error"])
-			Log.pr("AHH2")
 		else:
-			Log.pr("AHH1")
 			_ShowSuccess("Account Created!")
+		sign_up_button.disabled = false
 		)
 	pass
 func _on_login_pressed() -> void:

@@ -21,6 +21,7 @@ func RequestCreateAccount(email : String, password : String, listener : Callable
 		"password" : password}
 	)
 	var err : Error = request(URL, HEADERS, HTTPClient.METHOD_POST, body)
+	
 	if (err == OK):
 		set_meta("listener", listener)
 	else:
@@ -39,8 +40,8 @@ func _on_request_completed(result : int, response_code : int, headers : PackedSt
 	var body_text = body.get_string_from_utf8()
 	
 	if (body_text.is_empty()):
-		Log.err("Something went wrong!")
-		CallListener(data)
+		Log.err("Something went wrong: ", data)
+		CallListener({"error" : "Something went wrong :("})
 		return
 	
 	var parsed : Dictionary = JSON.parse_string(body_text)
