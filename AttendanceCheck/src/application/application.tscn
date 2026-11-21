@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://c4tcybc8ex32o" path="res://src/application/home_page/settings/accounts.gd" id="15_wopua"]
 [ext_resource type="Texture2D" uid="uid://csrhuirfmejc4" path="res://assets/ui/settings.svg" id="16_0nhlp"]
 [ext_resource type="Texture2D" uid="uid://caqlw5ejmdgdm" path="res://assets/ui/chevron_right.svg" id="16_qd0gi"]
+[ext_resource type="Script" uid="uid://cvisdr8l0ryf0" path="res://src/application/room_page/heatmap.gd" id="25_tap2p"]
 [ext_resource type="Texture2D" uid="uid://4a4vf3qu5ela" path="res://assets/ui/person.svg" id="26_xb6vf"]
 [ext_resource type="Script" uid="uid://di63id080joh" path="res://src/application/account_page/signup.gd" id="27_uou5b"]
 [ext_resource type="Texture2D" uid="uid://lnejpvnjodyf" path="res://assets/ui/lock.svg" id="27_wopua"]
@@ -69,7 +70,6 @@ grow_vertical = 2
 theme = ExtResource("4_7nc0p")
 
 [node name="Rooms" type="Control" parent="InactivePages/HomePage/Margin" unique_id=141425210]
-visible = false
 layout_mode = 2
 
 [node name="RoomHandler" type="Node" parent="InactivePages/HomePage/Margin/Rooms" unique_id=1773812971 node_paths=PackedStringArray("room_button", "list", "create_room", "room_page", "edit_rooms", "room_edit_actions", "edit_cancel", "edit_delete")]
@@ -307,6 +307,7 @@ theme_override_fonts/font = ExtResource("6_f3o30")
 text = "Delete"
 
 [node name="Settings" type="Control" parent="InactivePages/HomePage/Margin" unique_id=1304273199]
+visible = false
 layout_mode = 2
 
 [node name="Accounts" type="Node" parent="InactivePages/HomePage/Margin/Settings" unique_id=1745699344 node_paths=PackedStringArray("accounts", "account_page", "title", "desc")]
@@ -474,12 +475,12 @@ text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RoomPage" type="CanvasLayer" parent="InactivePages" unique_id=2134657536 node_paths=PackedStringArray("masterlist_handler", "today_attendance", "room_info")]
-visible = false
+[node name="RoomPage" type="CanvasLayer" parent="InactivePages" unique_id=2134657536 node_paths=PackedStringArray("masterlist_handler", "today_attendance", "room_info", "heatmap")]
 script = ExtResource("3_g0tt8")
 masterlist_handler = NodePath("Masterlist")
 today_attendance = NodePath("TodayAttendance")
 room_info = NodePath("RoomInfo")
+heatmap = NodePath("Heatmap")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
 [node name="RoomInfo" type="Node" parent="InactivePages/RoomPage" unique_id=122865609 node_paths=PackedStringArray("name_label", "students", "edit")]
@@ -504,6 +505,13 @@ no_record_container = NodePath("../Margin/Contents/Datas/Contents/TodayAttendanc
 record_attendance = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/NoRecord/RecordAttendance")
 view_attendance = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Attendance/ViewAttendance")
 total_label = NodePath("../Margin/Contents/Datas/Contents/TodayAttendance/Margin/Contents/Header/Total")
+
+[node name="Heatmap" type="Node" parent="InactivePages/RoomPage" unique_id=1376686382 node_paths=PackedStringArray("row_container", "week_container", "day_button", "scroll")]
+script = ExtResource("25_tap2p")
+row_container = NodePath("../Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Scroll/Row")
+week_container = NodePath("../Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Scroll/Row/Week")
+day_button = NodePath("../Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Scroll/Row/Week/Day")
+scroll = NodePath("../Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Scroll")
 
 [node name="Background" type="Panel" parent="InactivePages/RoomPage" unique_id=1633302386]
 anchors_preset = 15
@@ -630,6 +638,122 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
+
+[node name="Heatmap" type="Panel" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents" unique_id=773521120]
+custom_minimum_size = Vector2(0, 260)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Margin" type="MarginContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap" unique_id=1336272311]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin" unique_id=1686132093]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents" unique_id=1347939207]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Header" unique_id=1584459080]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("6_f3o30")
+text = "Attendance Map"
+
+[node name="Heatmap" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents" unique_id=1273866594]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Day" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap" unique_id=2007341395]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Mon" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Day" unique_id=563176177]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Mon"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tue" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Day" unique_id=1476013649]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Tue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wed" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Day" unique_id=575176868]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Wed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Thu" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Day" unique_id=1361458426]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Thu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fri" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Day" unique_id=729146173]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Fri"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sat" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Day" unique_id=1960451898]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Sat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sun" type="Label" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Day" unique_id=1039600931]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Sun"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap" unique_id=1638757840]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="Row" type="HBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Scroll" unique_id=39955066]
+layout_mode = 2
+
+[node name="Week" type="VBoxContainer" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Scroll/Row" unique_id=1778323314]
+visible = false
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="Day" type="Button" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents/Heatmap/Margin/Contents/Heatmap/Scroll/Row/Week" unique_id=1043606486]
+visible = false
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme_type_variation = &"GrayButton"
+theme_override_font_sizes/font_size = 8
 
 [node name="Masterlist" type="Panel" parent="InactivePages/RoomPage/Margin/Contents/Datas/Contents" unique_id=502686149]
 custom_minimum_size = Vector2(0, 300)

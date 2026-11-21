@@ -27,8 +27,10 @@ func GenerateUUID() -> String:
 func SafeConnect(event : Signal, callback : Callable):
 	if (event.is_connected(callback)): return
 	event.connect(callback) 
-func GetLocalUnixTime() -> float:
+func GetLocalUnixTime() -> int:
 	return Time.get_unix_time_from_datetime_dict(Time.get_datetime_dict_from_system())
+func DateToKey(date : Dictionary) -> String:
+	return "%04d-%02d-%02d" % [date["year"], date["month"], date["day"]]
 ## Frees all children.
 func RemoveChildren(parent : Node, ...exceptions : Array):
 	for node : Node in parent.get_children():

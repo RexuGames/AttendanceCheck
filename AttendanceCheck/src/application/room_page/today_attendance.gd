@@ -13,7 +13,7 @@ extends Node
 
 var masterlist : Dictionary[String,String]
 var attendance_today : Dictionary[String, bool]
-var attendance_history : Dictionary[Dictionary,Dictionary]
+var attendance_history : Dictionary[String,Dictionary]
 
 func _enter_tree() -> void:
 	Utils.SafeConnect(record_attendance.pressed, _on_record_attendance_pressed)
@@ -46,7 +46,7 @@ func _on_record_attendance_pressed() -> void:
 #endregion
 
 #region Global
-func Init(attendance_history : Dictionary[Dictionary,Dictionary], masterlist : Dictionary[String,String]) -> void:
+func Init(attendance_history : Dictionary[String,Dictionary], masterlist : Dictionary[String,String]) -> void:
 	self.masterlist = masterlist
 	self.attendance_history = attendance_history
 	self.attendance_today = _FindAttendanceInHistory(GetDateToday())
@@ -60,7 +60,7 @@ func Init(attendance_history : Dictionary[Dictionary,Dictionary], masterlist : D
 func UpdateAttendanceToday(new_record : Dictionary[String,bool]) -> void:
 	attendance_today.clear()
 	attendance_today.merge(new_record)
-	attendance_history[GetDateToday()] = attendance_today
+	attendance_history[Utils.DateToKey(GetDateToday())] = attendance_today
 func UpdateAttendanceCount() -> void:
 	if (attendance_today.is_empty()):
 		total_label.text = "N/A"
@@ -99,9 +99,9 @@ func UpdateDisplayedAttendance() -> void:
 
 #region Utils
 func _FindAttendanceInHistory(find_date : Dictionary) -> Dictionary[String,bool]:
-	for date : Dictionary in attendance_history:
-		if (_IsDateMatch(date, find_date)):
-			return attendance_history[date]
+	for date_key : String in attendance_history:
+		if (date_key == Utils.DateToKey(find_date)):
+			return attendance_history[date_key]
 	return {} as Dictionary[String, bool]
 func _IsDateMatch(date_a : Dictionary, date_b : Dictionary) -> bool:
 	var matching : Array[String] = ["year", "month", "day", "weekday"]
