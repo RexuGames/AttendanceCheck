@@ -6,6 +6,7 @@ extends Node
 @export_group("References")
 @export var email_edit: LineEdit
 @export var password_edit: LineEdit
+@export var username_edit: LineEdit
 @export var show_password: CheckButton
 @export var show_confirm_password: CheckButton
 @export var login_control: Control
@@ -30,17 +31,21 @@ func _on_show_confirmpassword_toggled(toggled_on : bool) -> void:
 func _on_signup_pressed() -> void:
 	
 	var email : String = email_edit.text
+	var username : String = username_edit.text
 	var password : String = password_edit.text
 	var confirm : String = confirm_password_edit.text
 	
 	if (not IsValidInputs(email,password,confirm)): return
 	sign_up_button.disabled = true
+	Log.pr("R")
 	Supabase.RequestCreateAccount(email, password,
 		func(data : Dictionary):
 			if (data.has("error")):
 				_ShowError(data["error"])
 			else:
-				_ShowSuccess("Account Created!")
+				var uuid : String = data["uuid"]
+				EventBus.signed_in.emit(uuid, username)
+				EventBus.page_pop_front_request.emit()
 			sign_up_button.disabled = false
 	)
 	pass

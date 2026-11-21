@@ -745,6 +745,13 @@ static func err(msg: Variant, msg2: Variant = "ZZZDEF", msg3: Variant = "ZZZDEF"
 	var m: String = Log.to_printable(msgs, {stack=get_stack(), disable_colors=true})
 	push_error(m)
 
+static func succ(msg: Variant, msg2: Variant = "ZZZDEF", msg3: Variant = "ZZZDEF", msg4: Variant = "ZZZDEF", msg5: Variant = "ZZZDEF", msg6: Variant = "ZZZDEF", msg7: Variant = "ZZZDEF") -> void:
+	var msgs: Array = [msg, msg2, msg3, msg4, msg5, msg6, msg7]
+	msgs = msgs.filter(Log.is_not_default)
+	var rich_msgs: Array = msgs.duplicate()
+	rich_msgs.push_front("[color=green][SUCCESS][/color]")
+	print_rich(Log.to_printable(rich_msgs, {stack=get_stack()}))
+	
 ## Like [code]Log.pr()[/code], but also calls push_error() with the pretty string.
 static func error(msg: Variant, msg2: Variant = "ZZZDEF", msg3: Variant = "ZZZDEF", msg4: Variant = "ZZZDEF", msg5: Variant = "ZZZDEF", msg6: Variant = "ZZZDEF", msg7: Variant = "ZZZDEF") -> void:
 	var msgs: Array = [msg, msg2, msg3, msg4, msg5, msg6, msg7]

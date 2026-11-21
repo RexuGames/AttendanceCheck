@@ -816,14 +816,14 @@ theme_type_variation = &"BlackButton"
 text = "Record Attendance"
 
 [node name="AccountPage" type="CanvasLayer" parent="InactivePages" unique_id=971056791]
-visible = false
 script = ExtResource("3_ouc2j")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
-[node name="Signup" type="Node" parent="InactivePages/AccountPage" unique_id=1087841099 node_paths=PackedStringArray("email_edit", "password_edit", "show_password", "show_confirm_password", "login_control", "confirm_password_edit", "sign_up_button", "login_button", "signup_control", "hint_label")]
+[node name="Signup" type="Node" parent="InactivePages/AccountPage" unique_id=1087841099 node_paths=PackedStringArray("email_edit", "password_edit", "username_edit", "show_password", "show_confirm_password", "login_control", "confirm_password_edit", "sign_up_button", "login_button", "signup_control", "hint_label")]
 script = ExtResource("27_uou5b")
 email_edit = NodePath("../Margin/Signup/Contents/Inputs/Email/Margin/Contents/Edit")
 password_edit = NodePath("../Margin/Signup/Contents/Inputs/Password/Margin/Contents/Edit")
+username_edit = NodePath("../Margin/Signup/Contents/Inputs/Username/Margin/Contents/Edit")
 show_password = NodePath("../Margin/Signup/Contents/Inputs/Password/Margin/Contents/Show")
 show_confirm_password = NodePath("../Margin/Signup/Contents/Inputs/ConfirmPassword/Margin/Contents/Show")
 login_control = NodePath("../Margin/Login")
@@ -875,7 +875,6 @@ theme_override_constants/margin_left = 30
 theme_override_constants/margin_right = 30
 
 [node name="Signup" type="Control" parent="InactivePages/AccountPage/Margin" unique_id=100883837]
-visible = false
 layout_mode = 2
 theme = ExtResource("4_7nc0p")
 
@@ -910,6 +909,33 @@ horizontal_alignment = 1
 [node name="Inputs" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents" unique_id=1834503711]
 layout_mode = 2
 theme_override_constants/separation = 16
+
+[node name="Username" type="Panel" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs" unique_id=1081824441]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Username" unique_id=1534306185]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="HBoxContainer" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Username/Margin" unique_id=509487897]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Username/Margin/Contents" unique_id=902155749]
+layout_mode = 2
+texture = ExtResource("26_xb6vf")
+stretch_mode = 5
+
+[node name="Edit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Username/Margin/Contents" unique_id=849760208]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter Username"
+virtual_keyboard_type = 5
 
 [node name="Email" type="Panel" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs" unique_id=205454820]
 custom_minimum_size = Vector2(0, 40)
@@ -1040,6 +1066,7 @@ text = "Login"
 flat = true
 
 [node name="Login" type="Control" parent="InactivePages/AccountPage/Margin" unique_id=1121223681]
+visible = false
 layout_mode = 2
 theme = ExtResource("4_7nc0p")
 

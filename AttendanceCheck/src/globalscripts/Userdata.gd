@@ -6,6 +6,7 @@ const FILE_PATH : String = "user://saved_data.tres"
 var resource : UserdataResource
 
 func _enter_tree() -> void:
+	Utils.SafeConnect(EventBus.signed_in, _on_signed_in)
 	Utils.SafeConnect(EventBus.logged_in, _on_logged_in)
 	Utils.SafeConnect(EventBus.attendance_updated, _on_attendance_updated)
 	Utils.SafeConnect(EventBus.room_edited, _on_room_edited)
@@ -14,15 +15,25 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	LoadResource()
 #region Listeners
+func _on_signed_in(account_uuid : String, username : String) -> void:
+	resource.account_uuid = account_uuid
+	resource.account_username = username
+	Log.pr("Hello " + username)
+	SaveResource()
+	pass
 func _on_logged_in(uuid : String) -> void:
 	resource.account_uuid = uuid
 	Supabase.RequestLoadResource(uuid, FILE_PATH, 
 		func(data : Dictionary):
 			if (not data.has("error")):
-				Log.pr("Files loaded!")
+				Log.succ("Files loaded from database!")
 				LoadResource()
 			else:
-				Log.err(data["error"])
+				if (data["error"] == "uuid_not_found"):
+					Log.warn("UUID does not exist!")
+					Log.warn("Removing resource.account_uuid")
+					Userdata.resource.account_uuid = ""
+					SaveResource()
 			)
 	SaveResource()
 func _on_attendance_updated(_new_record : Dictionary, _date : Dictionary) -> void:
@@ -36,7 +47,7 @@ func _on_rooms_updated(rooms : Array[RoomResource]) -> void:
 #endregion
 #region Local
 func SaveResource() -> void:
-	Log.pr("Data saved!")
+	Log.succ("Data saved localy!")
 	ResourceSaver.save(resource, FILE_PATH)
 	SaveToDB()
 func LoadResource() -> void:
@@ -55,10 +66,9 @@ func CreateNewData() -> void:
 #region Utils
 func SaveToDB() -> void:
 	if (resource.account_uuid.is_empty()): return
-	Log.pr("Trying to save")
 	Supabase.RequestSaveResource(FILE_PATH, resource.account_uuid, 
 		func(data : Dictionary):
 			if (data.has("data")):
-				Log.pr("Saved to database!")
+				Log.succ("Saved to database!")
 			)
 #endregion

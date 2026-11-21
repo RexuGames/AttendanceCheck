@@ -11,6 +11,7 @@ func _enter_tree() -> void:
 
 #region Listeners
 func _on_accounts_pressed() -> void:
+	if (Userdata.resource.account_uuid.is_empty()): return
 	EventBus.page_push_request.emit(account_page, {})
 	pass
 #endregion
