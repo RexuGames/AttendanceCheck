@@ -8,10 +8,11 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vobe2"]
 bg_color = Color(0, 0, 0, 0.32156864)
 
-[node name="AccountEditWidget" type="CanvasLayer" unique_id=659899774 node_paths=PackedStringArray("name_edit", "done")]
+[node name="AccountEditWidget" type="CanvasLayer" unique_id=659899774 node_paths=PackedStringArray("name_edit", "done", "hint")]
 script = ExtResource("1_chut4")
 name_edit = NodePath("MarginContainer/Panel/MarginContainer/Contents/Edit/NameEdit")
 done = NodePath("MarginContainer/Panel/MarginContainer/Contents/Options/Done")
+hint = NodePath("MarginContainer/Panel/MarginContainer/Contents/Hint")
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
 
 [node name="Close" type="Button" parent="." unique_id=1471850240]
@@ -29,12 +30,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("3_1oqwl")
 
 [node name="Panel" type="Panel" parent="MarginContainer" unique_id=1245660664]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 size_flags_vertical = 4
+theme_type_variation = &"BackgroundWidgetPanel"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=581987461]
 layout_mode = 1
@@ -75,7 +78,6 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.784359, 0.10997755, 0.15630624, 1)
 theme_override_font_sizes/font_size = 11
-text = "Invalid username!"
 horizontal_alignment = 1
 
 [node name="Options" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1453511905]
