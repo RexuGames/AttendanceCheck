@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://lnejpvnjodyf" path="res://assets/ui/lock.svg" id="27_wopua"]
 [ext_resource type="Script" uid="uid://dxba3dceasp34" path="res://src/application/account_page/login.gd" id="28_tddxi"]
 [ext_resource type="Texture2D" uid="uid://c4g4s1s0jr6en" path="res://assets/ui/visibility.svg" id="30_0afjm"]
+[ext_resource type="Texture2D" uid="uid://dhnmvdo1i17qn" path="res://assets/ui/mail.svg" id="30_64uep"]
 [ext_resource type="Texture2D" uid="uid://cl2jm74agym83" path="res://assets/ui/visibility_off.svg" id="31_tddxi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh16w"]
@@ -818,7 +819,6 @@ theme_type_variation = &"BlackButton"
 text = "Record Attendance"
 
 [node name="AccountPage" type="CanvasLayer" parent="InactivePages" unique_id=971056791]
-visible = false
 script = ExtResource("3_ouc2j")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
@@ -878,6 +878,7 @@ theme_override_constants/margin_left = 30
 theme_override_constants/margin_right = 30
 
 [node name="Signup" type="Control" parent="InactivePages/AccountPage/Margin" unique_id=100883837]
+visible = false
 layout_mode = 2
 theme = ExtResource("4_7nc0p")
 
@@ -958,7 +959,7 @@ theme_override_constants/separation = 10
 
 [node name="Icon" type="TextureRect" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Email/Margin/Contents" unique_id=1668034271]
 layout_mode = 2
-texture = ExtResource("26_xb6vf")
+texture = ExtResource("30_64uep")
 stretch_mode = 5
 
 [node name="Edit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Signup/Contents/Inputs/Email/Margin/Contents" unique_id=86852269]
@@ -1069,7 +1070,6 @@ text = "Login"
 flat = true
 
 [node name="Login" type="Control" parent="InactivePages/AccountPage/Margin" unique_id=1121223681]
-visible = false
 layout_mode = 2
 theme = ExtResource("4_7nc0p")
 
@@ -1123,7 +1123,7 @@ theme_override_constants/separation = 10
 
 [node name="Icon" type="TextureRect" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs/Email/Margin/Contents" unique_id=1139401633]
 layout_mode = 2
-texture = ExtResource("26_xb6vf")
+texture = ExtResource("30_64uep")
 stretch_mode = 5
 
 [node name="Edit" type="LineEdit" parent="InactivePages/AccountPage/Margin/Login/Contents/Inputs/Email/Margin/Contents" unique_id=746876719]
