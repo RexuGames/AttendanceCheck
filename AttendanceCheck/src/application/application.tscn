@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b742wa7qp0ipm" path="res://src/components/page_canva/PageCanva.gd" id="3_ouc2j"]
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="4_7nc0p"]
 [ext_resource type="Script" uid="uid://dqggkno68g3xg" path="res://src/application/room_page/masterlist.gd" id="4_g0tt8"]
+[ext_resource type="Script" uid="uid://i8tmmw1staqp" path="res://src/components/safe_margin/safe_margin.gd" id="5_43tsv"]
 [ext_resource type="Texture2D" uid="uid://box3qnqykpvc8" path="res://assets/ui/edit.svg" id="5_i6mit"]
 [ext_resource type="Script" uid="uid://buutp80yjtogd" path="res://src/application/home_page/rooms/room_handler.gd" id="5_rdayr"]
 [ext_resource type="Script" uid="uid://ywx4d5vcwg45" path="res://src/application/room_page/today_attendance.gd" id="5_y01ik"]
@@ -79,6 +80,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_7nc0p")
+script = ExtResource("5_43tsv")
 
 [node name="Rooms" type="Control" parent="InactivePages/HomePage/Margin" unique_id=141425210]
 visible = false
@@ -641,6 +643,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_7nc0p")
+script = ExtResource("5_43tsv")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/RoomPage/Margin" unique_id=1614160538]
 layout_mode = 2
@@ -1144,6 +1147,7 @@ mouse_filter = 2
 theme = ExtResource("4_7nc0p")
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_right = 30
+script = ExtResource("5_43tsv")
 
 [node name="Signup" type="Control" parent="InactivePages/AccountPage/Margin" unique_id=100883837]
 visible = false
@@ -1493,6 +1497,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_7nc0p")
+script = ExtResource("5_43tsv")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/FAQ/Margin" unique_id=353645128]
 layout_mode = 2
