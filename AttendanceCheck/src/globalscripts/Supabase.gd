@@ -91,7 +91,7 @@ func RequestSaveResource(local_path: String, account_uuid: String, listener: Cal
 		if file == null:
 			# No network request is happening, so complete it manually
 			# instead of letting the queue wait forever for a signal that will never fire
-			_CompleteRequest({"ok": false, "error": "local_file_not_found"})
+			_CompleteRequest({"error": "local_file_not_found"})
 			return
 
 		var file_bytes: PackedByteArray = file.get_buffer(file.get_length())

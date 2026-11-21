@@ -18,9 +18,11 @@ func _on_logged_in(uuid : String) -> void:
 	resource.account_uuid = uuid
 	Supabase.RequestLoadResource(uuid, FILE_PATH, 
 		func(data : Dictionary):
-			if (data["ok"]):
+			if (not data.has("error")):
 				Log.pr("Files loaded!")
 				LoadResource()
+			else:
+				Log.err(data["error"])
 			)
 	SaveResource()
 func _on_attendance_updated(_new_record : Dictionary, _date : Dictionary) -> void:
@@ -53,9 +55,10 @@ func CreateNewData() -> void:
 #region Utils
 func SaveToDB() -> void:
 	if (resource.account_uuid.is_empty()): return
+	Log.pr("Trying to save")
 	Supabase.RequestSaveResource(FILE_PATH, resource.account_uuid, 
 		func(data : Dictionary):
-			if (data["ok"]):
+			if (data.has("data")):
 				Log.pr("Saved to database!")
 			)
 #endregion
