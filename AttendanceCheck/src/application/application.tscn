@@ -25,7 +25,10 @@
 [ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="15_m83oe"]
 [ext_resource type="Script" uid="uid://c4tcybc8ex32o" path="res://src/application/home_page/settings/accounts.gd" id="15_wopua"]
 [ext_resource type="Texture2D" uid="uid://csrhuirfmejc4" path="res://assets/ui/settings.svg" id="16_0nhlp"]
+[ext_resource type="Script" uid="uid://da0cu8ypy15m5" path="res://src/application/home_page/settings/feedback.gd" id="16_gh66f"]
 [ext_resource type="Texture2D" uid="uid://caqlw5ejmdgdm" path="res://assets/ui/chevron_right.svg" id="16_qd0gi"]
+[ext_resource type="Texture2D" uid="uid://6gs8gkli34xj" path="res://assets/ui/sms.svg" id="18_6ondn"]
+[ext_resource type="Texture2D" uid="uid://cj34bafbuvf1a" path="res://assets/ui/help.svg" id="19_gh66f"]
 [ext_resource type="Script" uid="uid://cvisdr8l0ryf0" path="res://src/application/room_page/heatmap.gd" id="25_tap2p"]
 [ext_resource type="Texture2D" uid="uid://4a4vf3qu5ela" path="res://assets/ui/person.svg" id="26_xb6vf"]
 [ext_resource type="Script" uid="uid://di63id080joh" path="res://src/application/account_page/signup.gd" id="27_uou5b"]
@@ -77,6 +80,7 @@ grow_vertical = 2
 theme = ExtResource("4_7nc0p")
 
 [node name="Rooms" type="Control" parent="InactivePages/HomePage/Margin" unique_id=141425210]
+visible = false
 layout_mode = 2
 
 [node name="RoomHandler" type="Node" parent="InactivePages/HomePage/Margin/Rooms" unique_id=1773812971 node_paths=PackedStringArray("room_button", "list", "create_room", "room_page", "edit_rooms", "room_edit_actions", "edit_cancel", "edit_delete")]
@@ -314,7 +318,6 @@ theme_override_fonts/font = ExtResource("6_f3o30")
 text = "Delete"
 
 [node name="Settings" type="Control" parent="InactivePages/HomePage/Margin" unique_id=1304273199]
-visible = false
 layout_mode = 2
 
 [node name="Accounts" type="Node" parent="InactivePages/HomePage/Margin/Settings" unique_id=1745699344 node_paths=PackedStringArray("accounts", "account_page", "title", "desc")]
@@ -323,6 +326,10 @@ accounts = NodePath("../Contents/Body/Contents/Accounts")
 account_page = NodePath("../../../../AccountPage")
 title = NodePath("../Contents/Body/Contents/Accounts/MarginContainer/Contents/Info/Title")
 desc = NodePath("../Contents/Body/Contents/Accounts/MarginContainer/Contents/Info/Desc")
+
+[node name="Feedback" type="Node" parent="InactivePages/HomePage/Margin/Settings" unique_id=16300855 node_paths=PackedStringArray("feeback")]
+script = ExtResource("16_gh66f")
+feeback = NodePath("../Contents/Body/Contents/Feeback")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Settings" unique_id=555711917]
 layout_mode = 1
@@ -354,7 +361,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 12
 
 [node name="Accounts" type="Button" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents" unique_id=884066316]
 custom_minimum_size = Vector2(0, 75)
@@ -396,6 +403,96 @@ theme_override_font_sizes/font_size = 11
 text = "Saves data to cloud."
 
 [node name="TextureButton" type="TextureRect" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/Accounts/MarginContainer/Contents" unique_id=1829921969]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("16_qd0gi")
+stretch_mode = 3
+
+[node name="Feeback" type="Button" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents" unique_id=754284800]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_type_variation = &"GrayButton"
+
+[node name="MarginContainer" type="MarginContainer" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/Feeback" unique_id=834439389]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/Feeback/MarginContainer" unique_id=1546195158]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/Feeback/MarginContainer/Contents" unique_id=1176411210]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("18_6ondn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Info" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/Feeback/MarginContainer/Contents" unique_id=540297508]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/Feeback/MarginContainer/Contents/Info" unique_id=1246227795]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_mbg3t")
+text = "Feedback"
+
+[node name="Desc" type="Label" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/Feeback/MarginContainer/Contents/Info" unique_id=1492012330]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Help us improve"
+
+[node name="TextureButton" type="TextureRect" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/Feeback/MarginContainer/Contents" unique_id=105378046]
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("16_qd0gi")
+stretch_mode = 3
+
+[node name="FAQ" type="Button" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents" unique_id=1046826872]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_type_variation = &"GrayButton"
+
+[node name="MarginContainer" type="MarginContainer" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/FAQ" unique_id=1689068829]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="HBoxContainer" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/FAQ/MarginContainer" unique_id=18759304]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/FAQ/MarginContainer/Contents" unique_id=1154858818]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("19_gh66f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Info" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/FAQ/MarginContainer/Contents" unique_id=875685341]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/FAQ/MarginContainer/Contents/Info" unique_id=1627121321]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_mbg3t")
+text = "FAQ"
+
+[node name="Desc" type="Label" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/FAQ/MarginContainer/Contents/Info" unique_id=1110474421]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "Know how it works"
+
+[node name="TextureButton" type="TextureRect" parent="InactivePages/HomePage/Margin/Settings/Contents/Body/Contents/FAQ/MarginContainer/Contents" unique_id=111747007]
 layout_mode = 2
 size_flags_horizontal = 10
 texture = ExtResource("16_qd0gi")
@@ -483,6 +580,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RoomPage" type="CanvasLayer" parent="InactivePages" unique_id=2134657536 node_paths=PackedStringArray("masterlist_handler", "today_attendance", "room_info", "heatmap")]
+visible = false
 script = ExtResource("3_g0tt8")
 masterlist_handler = NodePath("Masterlist")
 today_attendance = NodePath("TodayAttendance")
