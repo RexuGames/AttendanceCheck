@@ -56,7 +56,10 @@ func _on_login_pressed() -> void:
 
 #region Local
 func IsValidInputs(email: String, password: String, confirm: String) -> bool:
-
+	
+	if username_edit.strip_edges().is_empty():
+		_ShowError("Please enter an username!")
+		return false
 	# --- Email checks ---
 	if email.strip_edges().is_empty():
 		_ShowError("Please enter an email!")
