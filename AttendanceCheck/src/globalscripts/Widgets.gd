@@ -2,6 +2,10 @@
 extends Node
 
 #region Global
+func CreateAccountSettings() -> void:
+	_CreateWidget(
+		{},
+		load("uid://d3raiv5mrtkjp"))
 func CreateConfirmation(info : String, _on_confirmed : Callable) -> void:
 	_CreateWidget(
 		{

@@ -35,7 +35,7 @@ func _on_signup_pressed() -> void:
 	var password : String = password_edit.text
 	var confirm : String = confirm_password_edit.text
 	
-	if (not IsValidInputs(email,password,confirm)): return
+	if (not IsValidInputs(username, email,password,confirm)): return
 	sign_up_button.disabled = true
 	Log.pr("R")
 	Supabase.RequestCreateAccount(email, password,
@@ -55,9 +55,9 @@ func _on_login_pressed() -> void:
 #endregion
 
 #region Local
-func IsValidInputs(email: String, password: String, confirm: String) -> bool:
+func IsValidInputs(username : String, email: String, password: String, confirm: String) -> bool:
 	
-	if username_edit.strip_edges().is_empty():
+	if username.strip_edges().is_empty():
 		_ShowError("Please enter an username!")
 		return false
 	# --- Email checks ---

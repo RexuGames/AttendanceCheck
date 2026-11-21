@@ -475,7 +475,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RoomPage" type="CanvasLayer" parent="InactivePages" unique_id=2134657536 node_paths=PackedStringArray("masterlist_handler", "today_attendance", "room_info")]
-visible = false
 script = ExtResource("3_g0tt8")
 masterlist_handler = NodePath("Masterlist")
 today_attendance = NodePath("TodayAttendance")
@@ -874,6 +873,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("4_7nc0p")
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_right = 30
@@ -881,6 +881,7 @@ theme_override_constants/margin_right = 30
 [node name="Signup" type="Control" parent="InactivePages/AccountPage/Margin" unique_id=100883837]
 visible = false
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("4_7nc0p")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Signup" unique_id=563475076]
@@ -890,6 +891,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 25
 alignment = 1
 
@@ -1072,6 +1074,7 @@ flat = true
 
 [node name="Login" type="Control" parent="InactivePages/AccountPage/Margin" unique_id=1121223681]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("4_7nc0p")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Login" unique_id=1565557578]
@@ -1081,6 +1084,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 25
 alignment = 1
 

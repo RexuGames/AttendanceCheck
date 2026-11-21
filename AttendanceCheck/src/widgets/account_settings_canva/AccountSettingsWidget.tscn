@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3raiv5mrtkjp"]
 
-[ext_resource type="Script" uid="uid://c6ee0o55k5jcn" path="res://src/widgets/WidgetCanva.gd" id="1_r2yi0"]
+[ext_resource type="Script" uid="uid://fieketxdcghp" path="res://src/widgets/account_settings_canva/account_settings_widget.gd" id="1_12u1s"]
 [ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="2_12u1s"]
 [ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="3_wqxgj"]
 [ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="4_nv22w"]
@@ -12,8 +12,13 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqrxy"]
 bg_color = Color(0, 0, 0, 0.32156864)
 
-[node name="AccountSettingsWidget" type="CanvasLayer" unique_id=242519401]
-script = ExtResource("1_r2yi0")
+[node name="AccountSettingsWidget" type="CanvasLayer" unique_id=242519401 node_paths=PackedStringArray("name_label", "uid", "edit", "email", "logout")]
+script = ExtResource("1_12u1s")
+name_label = NodePath("MarginContainer/Panel/MarginContainer/Contents/Account/Info/Name")
+uid = NodePath("MarginContainer/Panel/MarginContainer/Contents/Account/Info/UID")
+edit = NodePath("MarginContainer/Panel/MarginContainer/Contents/Account/Edit")
+email = NodePath("MarginContainer/Panel/MarginContainer/Contents/Email/Email")
+logout = NodePath("MarginContainer/Panel/MarginContainer/Contents/Logout")
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
 
 [node name="Close" type="Button" parent="." unique_id=1612734586]
@@ -82,9 +87,11 @@ theme_override_fonts/font = ExtResource("7_2cmn3")
 text = "Walid Santos"
 
 [node name="UID" type="Label" parent="MarginContainer/Panel/MarginContainer/Contents/Account/Info" unique_id=1371972129]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 11
-text = "UID: 140141"
+text = "UID:"
+text_overrun_behavior = 3
 
 [node name="Edit" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Account" unique_id=2041203618]
 custom_minimum_size = Vector2(34, 34)
@@ -126,7 +133,7 @@ theme_override_fonts/font = ExtResource("4_nv22w")
 theme_override_font_sizes/font_size = 14
 text = "walid.santos123@gmail.com"
 
-[node name="Button" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=152139080]
+[node name="Logout" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=152139080]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 10

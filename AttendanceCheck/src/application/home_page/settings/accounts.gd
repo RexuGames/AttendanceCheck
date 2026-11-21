@@ -12,9 +12,12 @@ func _enter_tree() -> void:
 	Utils.SafeConnect(EventBus.logged_in, _on_logged_in)
 	Utils.SafeConnect(EventBus.signed_in, _on_signed_in)
 	Utils.SafeConnect(EventBus.userdata_loaded, _on_userdata_loaded)
+	Utils.SafeConnect(EventBus.logout, _on_logout)
 
 
 #region Listeners
+func _on_logout() -> void:
+	UpdateDisplay()
 func _on_userdata_loaded(_a : Resource) -> void:
 	UpdateDisplay()
 func _on_signed_in(_a,_b,_c) -> void:
@@ -24,6 +27,8 @@ func _on_logged_in(_a) -> void:
 func _on_accounts_pressed() -> void:
 	if (Userdata.resource.account_uuid.is_empty()):
 		EventBus.page_push_request.emit(account_page, {})
+	else:
+		Widgets.CreateAccountSettings()
 	pass
 #endregion
 

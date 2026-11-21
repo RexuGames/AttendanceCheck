@@ -8,6 +8,7 @@ var resource : UserdataResource
 func _enter_tree() -> void:
 	Utils.SafeConnect(EventBus.signed_in, _on_signed_in)
 	Utils.SafeConnect(EventBus.logged_in, _on_logged_in)
+	Utils.SafeConnect(EventBus.logout, _on_logout)
 	Utils.SafeConnect(EventBus.attendance_updated, _on_attendance_updated)
 	Utils.SafeConnect(EventBus.room_edited, _on_room_edited)
 	Utils.SafeConnect(EventBus.masterlist_updated, _on_masterlist_updated)
@@ -15,11 +16,14 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	LoadResource()
 #region Listeners
+func _on_logout() -> void:
+	RemoveAccount()
+	SaveResource()
 func _on_signed_in(account_uuid : String, username : String, email : String) -> void:
 	resource.account_uuid = account_uuid
 	resource.account_username = username
 	resource.account_email = email
-	Log.pr("Hello " + username)
+	Log.succ("Hello %s!" % username)
 	SaveResource()
 	pass
 func _on_logged_in(uuid : String) -> void:
