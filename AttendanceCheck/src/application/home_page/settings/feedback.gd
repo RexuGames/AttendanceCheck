@@ -1,3 +1,4 @@
+@icon("res://addons/at-icons/node/speech_bubble.svg")
 extends Node
 
 @export_group("References")
