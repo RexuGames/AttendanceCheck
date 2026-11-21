@@ -15,9 +15,10 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	LoadResource()
 #region Listeners
-func _on_signed_in(account_uuid : String, username : String) -> void:
+func _on_signed_in(account_uuid : String, username : String, email : String) -> void:
 	resource.account_uuid = account_uuid
 	resource.account_username = username
+	resource.account_email = email
 	Log.pr("Hello " + username)
 	SaveResource()
 	pass
@@ -31,8 +32,7 @@ func _on_logged_in(uuid : String) -> void:
 			else:
 				if (data["error"] == "uuid_not_found"):
 					Log.warn("UUID does not exist!")
-					Log.warn("Removing resource.account_uuid")
-					Userdata.resource.account_uuid = ""
+					RemoveAccount()
 					SaveResource()
 			)
 	SaveResource()
@@ -64,6 +64,12 @@ func CreateNewData() -> void:
 #endregion
 
 #region Utils
+func RemoveAccount() -> void:
+	Log.warn("Removing Saved Account!")
+	resource.account_uuid = ""
+	resource.account_username = ""
+	resource.account_email = ""
+	pass
 func SaveToDB() -> void:
 	if (resource.account_uuid.is_empty()): return
 	Supabase.RequestSaveResource(FILE_PATH, resource.account_uuid, 

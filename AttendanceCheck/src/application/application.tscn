@@ -308,10 +308,12 @@ text = "Delete"
 [node name="Settings" type="Control" parent="InactivePages/HomePage/Margin" unique_id=1304273199]
 layout_mode = 2
 
-[node name="Accounts" type="Node" parent="InactivePages/HomePage/Margin/Settings" unique_id=1745699344 node_paths=PackedStringArray("accounts", "account_page")]
+[node name="Accounts" type="Node" parent="InactivePages/HomePage/Margin/Settings" unique_id=1745699344 node_paths=PackedStringArray("accounts", "account_page", "title", "desc")]
 script = ExtResource("15_wopua")
 accounts = NodePath("../Contents/Body/Contents/Accounts")
 account_page = NodePath("../../../../AccountPage")
+title = NodePath("../Contents/Body/Contents/Accounts/MarginContainer/Contents/Info/Title")
+desc = NodePath("../Contents/Body/Contents/Accounts/MarginContainer/Contents/Info/Desc")
 
 [node name="Contents" type="VBoxContainer" parent="InactivePages/HomePage/Margin/Settings" unique_id=555711917]
 layout_mode = 1
@@ -816,6 +818,7 @@ theme_type_variation = &"BlackButton"
 text = "Record Attendance"
 
 [node name="AccountPage" type="CanvasLayer" parent="InactivePages" unique_id=971056791]
+visible = false
 script = ExtResource("3_ouc2j")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 

@@ -44,7 +44,7 @@ func _on_signup_pressed() -> void:
 				_ShowError(data["error"])
 			else:
 				var uuid : String = data["uuid"]
-				EventBus.signed_in.emit(uuid, username)
+				EventBus.signed_in.emit(uuid, username, email)
 				EventBus.page_pop_front_request.emit()
 			sign_up_button.disabled = false
 	)
