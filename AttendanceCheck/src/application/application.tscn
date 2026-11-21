@@ -83,7 +83,6 @@ theme = ExtResource("4_7nc0p")
 script = ExtResource("5_43tsv")
 
 [node name="Rooms" type="Control" parent="InactivePages/HomePage/Margin" unique_id=141425210]
-visible = false
 layout_mode = 2
 
 [node name="RoomHandler" type="Node" parent="InactivePages/HomePage/Margin/Rooms" unique_id=1773812971 node_paths=PackedStringArray("room_button", "list", "create_room", "room_page", "edit_rooms", "room_edit_actions", "edit_cancel", "edit_delete")]
@@ -321,6 +320,7 @@ theme_override_fonts/font = ExtResource("6_f3o30")
 text = "Delete"
 
 [node name="Settings" type="Control" parent="InactivePages/HomePage/Margin" unique_id=1304273199]
+visible = false
 layout_mode = 2
 
 [node name="Accounts" type="Node" parent="InactivePages/HomePage/Margin/Settings" unique_id=1745699344 node_paths=PackedStringArray("accounts", "account_page", "title", "desc")]
@@ -1088,7 +1088,6 @@ theme_type_variation = &"GrayButton"
 theme_override_font_sizes/font_size = 8
 
 [node name="AccountPage" type="CanvasLayer" parent="InactivePages" unique_id=971056791]
-visible = false
 script = ExtResource("3_ouc2j")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
@@ -1356,7 +1355,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 18
 alignment = 1
 
 [node name="Info" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Login/Contents" unique_id=2142460624]
@@ -1441,6 +1440,14 @@ layout_mode = 2
 theme_override_icons/checked = ExtResource("30_0afjm")
 theme_override_icons/unchecked = ExtResource("31_tddxi")
 
+[node name="ForgotPassword" type="Button" parent="InactivePages/AccountPage/Margin/Login/Contents" unique_id=438229573]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"GrayButton"
+theme_override_font_sizes/font_size = 14
+text = "Forgot Password?"
+flat = true
+
 [node name="Confirm" type="VBoxContainer" parent="InactivePages/AccountPage/Margin/Login/Contents" unique_id=1162640300]
 layout_mode = 2
 theme_override_constants/separation = 8
@@ -1477,6 +1484,7 @@ text = "Signup"
 flat = true
 
 [node name="FAQ" type="CanvasLayer" parent="InactivePages" unique_id=1491932696]
+visible = false
 script = ExtResource("3_ouc2j")
 metadata/_custom_type_script = "uid://b742wa7qp0ipm"
 
