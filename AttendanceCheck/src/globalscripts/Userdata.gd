@@ -6,6 +6,7 @@ const FILE_PATH : String = "user://saved_data.tres"
 var resource : UserdataResource
 
 func _enter_tree() -> void:
+	Utils.SafeConnect(EventBus.account_edited, _on_account_edited)
 	Utils.SafeConnect(EventBus.signed_in, _on_signed_in)
 	Utils.SafeConnect(EventBus.logged_in, _on_logged_in)
 	Utils.SafeConnect(EventBus.logout, _on_logout)
@@ -16,6 +17,8 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	LoadResource()
 #region Listeners
+func _on_account_edited() -> void:
+	SaveResource()
 func _on_logout() -> void:
 	RemoveAccount()
 	SaveResource()

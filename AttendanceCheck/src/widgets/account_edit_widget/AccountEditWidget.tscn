@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cvbbqmbtpf3pw"]
+
+[ext_resource type="Script" uid="uid://bku7wedtvc5r0" path="res://src/widgets/account_edit_widget/account_edit_widget.gd" id="1_chut4"]
+[ext_resource type="Script" uid="uid://d0bhasdxpoce4" path="res://src/components/close_button/close_button.gd" id="2_chut4"]
+[ext_resource type="Theme" uid="uid://cxn5wxi13xdg" path="res://src/resources/theme/app_theme.tres" id="3_1oqwl"]
+[ext_resource type="FontFile" uid="uid://bws3jnxsq8dr1" path="res://assets/fonts/Inter-Bold.ttf" id="4_1x0di"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vobe2"]
+bg_color = Color(0, 0, 0, 0.32156864)
+
+[node name="AccountEditWidget" type="CanvasLayer" unique_id=659899774 node_paths=PackedStringArray("name_edit", "done")]
+script = ExtResource("1_chut4")
+name_edit = NodePath("MarginContainer/Panel/MarginContainer/Contents/Edit/NameEdit")
+done = NodePath("MarginContainer/Panel/MarginContainer/Contents/Options/Done")
+metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
+
+[node name="Close" type="Button" parent="." unique_id=1471850240]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vobe2")
+script = ExtResource("2_chut4")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1957317022]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_1oqwl")
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1245660664]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=581987461]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Contents" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1952665507]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1535877694]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/Panel/MarginContainer/Contents/Header" unique_id=1315161457]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("4_1x0di")
+text = "Edit Account"
+horizontal_alignment = 1
+
+[node name="Edit" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1106256296]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/Contents/Edit" unique_id=343567302]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Username"
+
+[node name="NameEdit" type="LineEdit" parent="MarginContainer/Panel/MarginContainer/Contents/Edit" unique_id=1368273657]
+layout_mode = 2
+placeholder_text = "New Username"
+alignment = 1
+
+[node name="Hint" type="Label" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=76986310]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.784359, 0.10997755, 0.15630624, 1)
+theme_override_font_sizes/font_size = 11
+text = "Invalid username!"
+horizontal_alignment = 1
+
+[node name="Options" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/Contents" unique_id=1453511905]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Close" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Options" unique_id=1285933079]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GrayButton"
+text = "Close"
+script = ExtResource("2_chut4")
+
+[node name="Done" type="Button" parent="MarginContainer/Panel/MarginContainer/Contents/Options" unique_id=1410844983]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"BlackButton"
+text = "Done"

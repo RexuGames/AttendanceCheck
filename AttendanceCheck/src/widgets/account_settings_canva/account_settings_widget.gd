@@ -11,6 +11,7 @@ var userdata : UserdataResource
 
 func _enter_tree() -> void:
 	super()
+	Utils.SafeConnect(edit.pressed, _on_edit_pressed)
 	Utils.SafeConnect(logout.pressed, _on_logout_pressed)
 
 func InitWidget(passed_data : Dictionary) -> void:
@@ -19,6 +20,14 @@ func InitWidget(passed_data : Dictionary) -> void:
 	DisplayInfo()
 
 #region Listeners
+func _on_edit_pressed() -> void:
+	Widgets.CreateEditAccount(userdata.account_username, 
+		func(new_username: String):
+			userdata.account_username = new_username
+			DisplayInfo()
+			EventBus.account_edited.emit()
+			)
+	pass
 func _on_logout_pressed() -> void:
 	EventBus.logout.emit()
 	CloseWidget()

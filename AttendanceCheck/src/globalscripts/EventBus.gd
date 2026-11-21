@@ -6,6 +6,7 @@ extends Node
 @warning_ignore("unused_signal") signal logout(acccount_uuid: String)
 @warning_ignore("unused_signal") signal logged_in(acccount_uuid: String)
 @warning_ignore("unused_signal") signal signed_in(account_uuid: String, username : String, email : String)
+@warning_ignore("unused_signal") signal account_edited(acccount_uuid: String)
 #endregion
 
 #region Data

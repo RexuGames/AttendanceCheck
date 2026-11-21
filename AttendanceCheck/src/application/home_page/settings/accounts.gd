@@ -13,9 +13,11 @@ func _enter_tree() -> void:
 	Utils.SafeConnect(EventBus.signed_in, _on_signed_in)
 	Utils.SafeConnect(EventBus.userdata_loaded, _on_userdata_loaded)
 	Utils.SafeConnect(EventBus.logout, _on_logout)
-
+	Utils.SafeConnect(EventBus.account_edited, _on_account_edited)
 
 #region Listeners
+func _on_account_edited() -> void:
+	UpdateDisplay()
 func _on_logout() -> void:
 	UpdateDisplay()
 func _on_userdata_loaded(_a : Resource) -> void:

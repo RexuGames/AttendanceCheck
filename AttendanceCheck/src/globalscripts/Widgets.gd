@@ -2,6 +2,13 @@
 extends Node
 
 #region Global
+func CreateEditAccount(username : String, _on_confirmed : Callable) -> void:
+	_CreateWidget(
+		{
+			"username" : username
+		},
+		load("uid://cvbbqmbtpf3pw"),
+		_on_confirmed)
 func CreateAccountSettings() -> void:
 	_CreateWidget(
 		{},
