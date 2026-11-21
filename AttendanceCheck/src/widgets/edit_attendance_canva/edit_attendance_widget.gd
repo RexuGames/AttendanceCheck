@@ -17,7 +17,7 @@ func _enter_tree() -> void:
 func InitWidget(passed_data : Dictionary) -> void:
 	super(passed_data)
 	masterlist = passed_data["masterlist"]
-	attendance_info.Init(passed_data["date"])
+	attendance_info.Init(passed_data["date_key"])
 	InitDraftAttendance(passed_data)
 	UpdateDisplayedAttendance()
 

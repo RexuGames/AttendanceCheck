@@ -17,6 +17,8 @@ edit = NodePath("MarginContainer/Panel/MarginContainer/Contents/Options/Edit")
 present = NodePath("MarginContainer/Panel/MarginContainer/Contents/Info/Present")
 absent = NodePath("MarginContainer/Panel/MarginContainer/Contents/Info/Absent")
 destroy_on_popped = true
+page_pop_anim = null
+page_push_anim = null
 metadata/_custom_type_script = "uid://c6ee0o55k5jcn"
 
 [node name="Close" type="Button" parent="." unique_id=364455094]

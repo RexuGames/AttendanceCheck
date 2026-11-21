@@ -23,9 +23,9 @@ func _enter_tree() -> void:
 
 #region Listeners
 func _on_view_attendance_pressed() -> void:
-	Widgets.CreateViewAttendance(attendance_today, masterlist, GetDateToday())
-func _on_attendance_updated(new_record : Dictionary, date : Dictionary):
-	if not (date == GetDateToday()): return
+	Widgets.CreateViewAttendance(attendance_today, masterlist, Utils.DateToKey(GetDateToday()))
+func _on_attendance_updated(new_record : Dictionary, date_key : String):
+	if not (date_key == Utils.DateToKey(GetDateToday())): return
 	UpdateAttendanceToday(new_record)
 	UpdateDisplayedAttendance()
 	UpdateStateContainers()
@@ -39,9 +39,9 @@ func _on_record_attendance_pressed() -> void:
 	if (masterlist.is_empty()):
 		ToastCreator.show_toast("Please add students first!")
 		return
-	Widgets.CreateEditAttendance(attendance_today, masterlist, "", GetDateToday(), 
+	Widgets.CreateEditAttendance(attendance_today, masterlist, "",  Utils.DateToKey(GetDateToday()), 
 		func(new_record : Dictionary):
-			EventBus.attendance_updated.emit(new_record, GetDateToday())
+			EventBus.attendance_updated.emit(new_record, Utils.DateToKey(GetDateToday()))
 			)
 #endregion
 

@@ -8,7 +8,7 @@ extends WidgetCanva
 @export var absent: Label
 
 
-var date : Dictionary
+var date_key : String
 var attendance_record : Dictionary
 var masterlist : Dictionary
 
@@ -21,21 +21,21 @@ func InitWidget(passed_data : Dictionary) -> void:
 	super(passed_data)
 	attendance_record = passed_data["attendance_record"]
 	masterlist = passed_data["masterlist"]
-	date = passed_data["date"]
+	date_key = passed_data["date_key"]
 	UpdateDisplayedAttendance()
 	UpdateTotalPresentAbsent()
 
 #region Listeners
-func _on_attendance_updated(new_record : Dictionary, date : Dictionary):
-	if (not self.date == date): return
+func _on_attendance_updated(new_record : Dictionary, date_key : String):
+	if (not self.date_key == date_key): return
 	attendance_record = new_record
 	UpdateDisplayedAttendance()
 	UpdateTotalPresentAbsent()
 	
 func _on_edit_pressed() -> void:
-	Widgets.CreateEditAttendance(attendance_record, masterlist, "", date, 
+	Widgets.CreateEditAttendance(attendance_record, masterlist, "", date_key, 
 		func(new_record : Dictionary):
-			EventBus.attendance_updated.emit(new_record, date)
+			EventBus.attendance_updated.emit(new_record, date_key)
 			)
 	pass
 #endregion

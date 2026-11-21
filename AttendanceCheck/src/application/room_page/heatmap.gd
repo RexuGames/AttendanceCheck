@@ -22,10 +22,14 @@ func _enter_tree() -> void:
 	Utils.SafeConnect(EventBus.masterlist_updated, _on_masterlist_updated)
 
 #region Listeners
+func _on_daybutton_pressed(date_key : String) -> void:
+	if (attendance_history.has(date_key)):
+		Widgets.CreateViewAttendance(attendance_history[date_key], masterlist, date_key)
+	pass
 func _on_masterlist_updated(masterlist : Dictionary) -> void:
 	UpdateHeatmapData()
 	pass
-func _on_attendance_updated(attendance_record : Dictionary, date : Dictionary) -> void:
+func _on_attendance_updated(attendance_record : Dictionary, date_key : String) -> void:
 	UpdateHeatmapData()
 	pass
 #endregion
@@ -82,6 +86,7 @@ func _CreateDayButton(date_key : String, week_container : VBoxContainer) -> Butt
 	new_button.visible = true
 	new_button.name = date_key
 	day_buttons[date_key] = new_button
+	Utils.SafeConnect(new_button.pressed, _on_daybutton_pressed.bind(date_key))
 	return new_button
 func _GetStartDate() -> Dictionary:
 	var start_date: Dictionary = {

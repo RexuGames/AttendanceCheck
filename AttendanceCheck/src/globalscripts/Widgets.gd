@@ -39,11 +39,11 @@ func CreateEditAttendance(
 	attendance_record : Dictionary[String, bool], 
 	masterlist : Dictionary[String,String], 
 	room_name : String,
-	date : Dictionary,
+	date_key : String,
 	_on_confirmed : Callable) -> void:
 	_CreateWidget(
 		{
-			"date" : date,
+			"date_key" : date_key,
 			"room_name" : room_name,
 			"masterlist": masterlist,
 			"attendance_record": attendance_record.duplicate()
@@ -53,10 +53,10 @@ func CreateEditAttendance(
 func CreateViewAttendance(
 	attendance_record : Dictionary[String, bool], 
 	masterlist : Dictionary[String,String], 
-	date : Dictionary) -> void:
+	date_key : String) -> void:
 	_CreateWidget(
 		{
-			"date" : date,
+			"date_key" : date_key,
 			"masterlist": masterlist,
 			"attendance_record": attendance_record
 		}, 

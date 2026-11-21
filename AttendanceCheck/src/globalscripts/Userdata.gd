@@ -43,7 +43,7 @@ func _on_logged_in(uuid : String) -> void:
 					SaveResource()
 			)
 	SaveResource()
-func _on_attendance_updated(_new_record : Dictionary, _date : Dictionary) -> void:
+func _on_attendance_updated(_new_record : Dictionary, _date_key: String) -> void:
 	SaveResource.call_deferred()
 func _on_room_edited(_room : RoomResource) -> void:
 	SaveResource.call_deferred()
