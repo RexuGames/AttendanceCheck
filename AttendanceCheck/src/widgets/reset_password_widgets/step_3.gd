@@ -75,8 +75,9 @@ func IsValidInputs(password: String, confirm: String) -> bool:
 
 #region Utils
 func _ShowHint(text : String, color : Color = Color.BLACK) -> void:
+	hint.visible = true
 	hint.text = text
 	hint.add_theme_color_override("font_color", color)
-	await get_tree().create_timer(2).timeout
-	hint.text = ""
+	await get_tree().create_timer(5).timeout
+	hint.visible = false
 #endregion

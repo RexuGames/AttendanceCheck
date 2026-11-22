@@ -13,8 +13,10 @@ func _enter_tree() -> void:
 
 #region Listeners
 func _on_done_pressed() -> void:
-	done.disabled = true
 	var email : String = email_edit.text
+	
+	if (not IsInputValid(email)): return
+	done.disabled = true
 	Supabase.RequestFindEmail(email, 
 		func(data : Dictionary):
 			Log.pr("Complete", data)
@@ -29,6 +31,24 @@ func _on_done_pressed() -> void:
 #endregion
 
 #region Local
+func IsInputValid(email : String) -> bool:
+	if email.strip_edges().is_empty():
+		_ShowError("Please enter an email!")
+		return false
+
+	if not email.to_lower().ends_with("@gmail.com"):
+		_ShowError("Invalid email address!")
+		return false
+
+	if email.strip_edges().length() <= "@gmail.com".length():
+		_ShowError("Please enter a valid email address!")
+		return false
+
+	if email.contains(" "):
+		_ShowError("Email address cannot contain spaces!")
+		return false
+
+	return true
 func InitStep() -> void:
 	email_edit.text = ""
 	step_1_contents.visible = true
@@ -40,7 +60,8 @@ func NextStep(email : String) -> void:
 
 #region Utils
 func _ShowError(text : String) -> void:
+	hint.visible = true
 	hint.text = text
-	await get_tree().create_timer(2).timeout
-	hint.text = ""
+	await get_tree().create_timer(5).timeout
+	hint.visible = false
 #endregion
