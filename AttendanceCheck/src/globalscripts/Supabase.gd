@@ -131,6 +131,14 @@ func RequestFindEmail(email : String, listener : Callable) -> void:
 		_CreateRequest("find-email", 
 		{"email" : email})
 	QueueRequest(starter, listener)
+
+
+func RequestChangePassword(email : String, new_password : String, listener : Callable) -> void:
+	var starter : Callable = func():
+		_CreateRequest("change-password",
+		{"email" : email,
+		"new_password" : new_password})
+	QueueRequest(starter, listener)
 #endregion
 
 #region Utils

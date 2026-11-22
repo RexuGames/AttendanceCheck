@@ -27,6 +27,10 @@ func _on_done_pressed() -> void:
 #endregion
 
 #region Local
+func InitStep() -> void:
+	email_edit.text = ""
+	step_1_contents.visible = true
+	pass
 func NextStep(email : String) -> void:
 	step_2.InitStep(email)
 	step_1_contents.visible = false

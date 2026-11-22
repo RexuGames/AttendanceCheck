@@ -2,11 +2,14 @@
 extends Node
 
 @export_group("References")
+@export var step_1: VBoxContainer
+@export var step_3: Node
 @export var step_2_contents: VBoxContainer
 @export var code_edit: LineEdit
 @export var resend: RichTextLabel
 @export var done: Button
 @export var hint: Label
+@export var back: Button
 
 var email : String = ""
 var code : int = 0
@@ -14,11 +17,14 @@ var code : int = 0
 func _enter_tree() -> void:
 	Utils.SafeConnect(resend.meta_clicked, _on_meta_clicked)
 	Utils.SafeConnect(done.pressed, _on_done_pressed)
+	Utils.SafeConnect(back.pressed, _on_back_pressed)
 
 #region Listeners
+func _on_back_pressed() -> void:
+	BackStep()
 func _on_done_pressed() -> void:
 	if (int(code_edit.text) == code):
-		Log.succ("Move to step 3!")
+		NextStep()
 func _on_meta_clicked(meta : String) -> void:
 	if (meta == "resend"):
 		SendCode(email)
@@ -32,6 +38,10 @@ func InitStep(email : String) -> void:
 #endregion
 
 #region Local
+func BackStep() -> void:
+	email = ""
+	step_2_contents.visible = false
+	step_1.InitStep()
 func SendCode(email : String) -> void:
 	self.email = email
 	code = randi_range(100000, 999999)
@@ -60,6 +70,10 @@ func SendCode(email : String) -> void:
 		http.queue_free()
 	)
 	http.request(url, headers, HTTPClient.METHOD_POST, body)
+func NextStep() -> void:
+	step_2_contents.visible = false
+	Log.pr(email)
+	step_3.InitStep(email)
 #endregion
 
 #region Utils
