@@ -4,8 +4,8 @@ extends Node
 @export_group("References")
 @export var email_edit: LineEdit
 @export var done: Button
-@export var step_1: VBoxContainer
-@export var step_2: VBoxContainer
+@export var step_1_contents: VBoxContainer
+@export var step_2: Node
 @export var hint: Label
 
 func _enter_tree() -> void:
@@ -21,15 +21,15 @@ func _on_done_pressed() -> void:
 				_ShowError(data["error"])
 			else:
 				Log.succ("Email found!")
-				MoveToNextStep()
+				NextStep(email)
 			)
 	pass
 #endregion
 
 #region Local
-func MoveToNextStep() -> void:
-	step_1.visible = false
-	step_2.visible = true
+func NextStep(email : String) -> void:
+	step_2.InitStep(email)
+	step_1_contents.visible = false
 #endregion
 
 #region Utils
