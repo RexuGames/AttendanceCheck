@@ -3,7 +3,7 @@ extends Node
 
 
 @export_group("References")
-@export var step_1: VBoxContainer
+@export var step_1: Node
 @export var step_3: Node
 @export var step_2_contents: VBoxContainer
 @export var code_edit: LineEdit
@@ -31,6 +31,8 @@ func _on_back_pressed() -> void:
 func _on_done_pressed() -> void:
 	if (int(code_edit.text) == code):
 		NextStep()
+	else:
+		_ShowHint("Invalid Code!", Color.RED)
 func _on_meta_clicked(meta : String) -> void:
 	if (meta == "resend"):
 		SendCode(email)
