@@ -13,6 +13,7 @@ func _enter_tree() -> void:
 
 #region Listeners
 func _on_done_pressed() -> void:
+	done.disabled = true
 	var email : String = email_edit.text
 	Supabase.RequestFindEmail(email, 
 		func(data : Dictionary):
@@ -22,6 +23,7 @@ func _on_done_pressed() -> void:
 			else:
 				Log.succ("Email found!")
 				NextStep(email)
+			done.disabled = false
 			)
 	pass
 #endregion

@@ -19,7 +19,7 @@ func _on_done_pressed() -> void:
 	var password : String = password_edit.text
 	var confirm : String = confirm_password_edit.text
 	if (not IsValidInputs(password, confirm)): return
-	
+	done.disabled = true
 	Supabase.RequestChangePassword(email, password, 
 		func(data : Dictionary):
 			Log.pr(data)
@@ -28,6 +28,7 @@ func _on_done_pressed() -> void:
 			else:
 				Log.succ("Password Changed!")
 				EventBus.page_pop_front_request.emit()
+			done.disabled = false
 			)
 			
 	pass

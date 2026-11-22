@@ -1,6 +1,7 @@
 @icon("res://addons/at-icons/node/script.svg")
 extends Node
 
+
 @export_group("References")
 @export var step_1: VBoxContainer
 @export var step_3: Node
@@ -11,8 +12,13 @@ extends Node
 @export var hint: Label
 @export var back: Button
 
+@export_group("Resend Cooldown")
+@export var resend_cooldown_seconds: int = 30
+
 var email : String = ""
 var code : int = 0
+var can_send : bool = true
+var _cooldown_time_left : int = 0
 
 func _enter_tree() -> void:
 	Utils.SafeConnect(resend.meta_clicked, _on_meta_clicked)
@@ -28,6 +34,7 @@ func _on_done_pressed() -> void:
 func _on_meta_clicked(meta : String) -> void:
 	if (meta == "resend"):
 		SendCode(email)
+
 #endregion
 
 #region Global
@@ -43,6 +50,8 @@ func BackStep() -> void:
 	step_2_contents.visible = false
 	step_1.InitStep()
 func SendCode(email : String) -> void:
+	if (not can_send): return
+	can_send = false
 	self.email = email
 	code = randi_range(100000, 999999)
 
@@ -70,6 +79,8 @@ func SendCode(email : String) -> void:
 		http.queue_free()
 	)
 	http.request(url, headers, HTTPClient.METHOD_POST, body)
+
+	_StartResendCooldown()
 func NextStep() -> void:
 	step_2_contents.visible = false
 	Log.pr(email)
@@ -82,4 +93,22 @@ func _ShowHint(text : String, color : Color = Color.BLACK) -> void:
 	hint.add_theme_color_override("font_color", color)
 	await get_tree().create_timer(2).timeout
 	hint.text = ""
+
+func _StartResendCooldown() -> void:
+	_cooldown_time_left = resend_cooldown_seconds
+	_UpdateResendLabel()
+
+	while _cooldown_time_left > 0:
+		await get_tree().create_timer(1.0).timeout
+		_cooldown_time_left -= 1
+		_UpdateResendLabel()
+
+	can_send = true
+	resend.text = "Didn't get the code? [url=\"resend\"][b]Resend[/b][/url]"
+
+func _UpdateResendLabel() -> void:
+	if _cooldown_time_left > 0:
+		resend.text = "Didn't get the code? Resend (%ds)" % _cooldown_time_left
+	else:
+		resend.text = "Didn't get the code? [url=\"resend\"][b]Resend[/b][/url]"
 #endregion
