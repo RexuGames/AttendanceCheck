@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://c4g4s1s0jr6en" path="res://assets/ui/visibility.svg" id="30_0afjm"]
 [ext_resource type="Texture2D" uid="uid://dhnmvdo1i17qn" path="res://assets/ui/mail.svg" id="30_64uep"]
 [ext_resource type="Texture2D" uid="uid://cl2jm74agym83" path="res://assets/ui/visibility_off.svg" id="31_tddxi"]
+[ext_resource type="Script" uid="uid://di45qvq72yv7y" path="res://src/application/account_page/forgot_password.gd" id="35_a3r2q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dh16w"]
 bg_color = Color(1, 1, 1, 1)
@@ -1115,6 +1116,10 @@ signup = NodePath("../Margin/Login/Contents/Option/Signup")
 signup_control = NodePath("../Margin/Signup")
 login_control = NodePath("../Margin/Login")
 hint_label = NodePath("../Margin/Login/Contents/Confirm/Hint")
+
+[node name="ForgotPassword" type="Node" parent="InactivePages/AccountPage" unique_id=1709779256 node_paths=PackedStringArray("forgot_password")]
+script = ExtResource("35_a3r2q")
+forgot_password = NodePath("../Margin/Login/Contents/ForgotPassword")
 
 [node name="Background" type="Panel" parent="InactivePages/AccountPage" unique_id=2096958353]
 anchors_preset = 15

@@ -15,9 +15,9 @@ func _enter_tree() -> void:
 func _on_request_completed(result : int, response_code : int, headers : PackedStringArray, body : PackedByteArray) -> void:
 	var data : Dictionary
 
-	if (response_code < 200 or response_code >= 300):
+	if (response_code < 200 or response_code >= 500):
 		Log.err("HTTP Request Failed; code: ", response_code)
-		_CompleteRequest({"ok": false, "status": response_code, "error": "http_error"})
+		_CompleteRequest({"ok": false, "status": response_code, "error": "Internal Server Error"})
 		return
 
 	var body_text := body.get_string_from_utf8()
@@ -35,6 +35,7 @@ func _on_request_completed(result : int, response_code : int, headers : PackedSt
 
 	data = parsed
 	data["ok"] = true
+	Log.succ("Request Completed!")
 	_CompleteRequest(data)
 
 func CallListener(body : Dictionary) -> void:
@@ -122,6 +123,13 @@ func RequestCreateAccount(email : String, password : String, listener : Callable
 			"email" : email,
 			"password" : password
 		})
+	QueueRequest(starter, listener)
+
+
+func RequestFindEmail(email : String, listener : Callable) -> void:
+	var starter : Callable = func():
+		_CreateRequest("find-email", 
+		{"email" : email})
 	QueueRequest(starter, listener)
 #endregion
 

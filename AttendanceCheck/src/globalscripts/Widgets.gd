@@ -2,6 +2,12 @@
 extends Node
 
 #region Global
+func CreateResetPassword() -> void:
+	_CreateWidget(
+		{},
+		load("uid://dfm3bhlaaqhi4")
+	)
+	pass
 func CreateEditAccount(username : String, _on_confirmed : Callable) -> void:
 	_CreateWidget(
 		{
