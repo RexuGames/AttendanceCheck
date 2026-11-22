@@ -50,7 +50,6 @@ func IsInputValid(email : String) -> bool:
 
 	return true
 func InitStep() -> void:
-	email_edit.text = ""
 	step_1_contents.visible = true
 	pass
 func NextStep(email : String) -> void:
